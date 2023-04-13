@@ -2,6 +2,7 @@ import time, logging, os
 from library.Dataset.Dataset import Dataset
 from library.Dataset.Normalization import Normalization
 from library.Exceptions.CustomExceptions import TrainingException
+from library.Plot.Correlation import plot as correlation_plt
 
 
 class Training:
@@ -48,9 +49,11 @@ class Training:
             self.logger.info("Normalization dataset...")
             normalizer = Normalization(df)
             start = time.time()
-            normalizer.execute()
+            df = normalizer.execute()
             end = time.time()
             self.logger.info(f"Normalization concluded in {round(end - start, 2)}sec")
+
+            correlation_plt(df)
 
             self.logger.info("Training concluded...")
             self.release_logger()

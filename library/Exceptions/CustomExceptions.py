@@ -13,3 +13,8 @@ class NormalizationException(Exception):
 class DataVisualizationException(Exception):
     pass
 
+
+class CorrelationException(Exception):
+    pass
+
+

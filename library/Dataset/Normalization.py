@@ -89,8 +89,9 @@ Attribute 20: foreign worker
     A202 : no - 2
 
 """
-import pandas as pd
+import pandas as pd, json
 from library.Exceptions.CustomExceptions import NormalizationException
+from library.Dataset.Dataset import Dataset
 
 
 class Normalization:
@@ -103,22 +104,39 @@ class Normalization:
         :param df: DataFrame to normalize
         """
         self.df = df
+        self.base_path = "library/Dataset/Rules/{}"
 
-    def execute(self, style="DEFAULT"):
+    def execute(self, style="DEFAULT", save=False):
         """
         Execute rules transformation with factory builder design pattern
         :param style: var. used to choose between different rules
+        :param save: var. used to save or not new normalized DataFrame
         :return: updated DataFrame
         """
         if style == "DEFAULT":
-            self.rules_default()
+            self.__rules_default(save=save)
             return self.df
         else:
             raise NormalizationException(f"Transformation rules '{style}' not defined")
 
-    def rules_default(self):
+    def __rules_default(self, save=False):
         """
-        This method apply rules to library attribute self.df
+        This method apply rules to library attribute self.df.
+        self.df will be stored inside a new CSV / XLSX file.
+
+        First normalize data then convert 'em all to integer.
+        :param save: var. used to save or not new normalized DataFrame
         :return: nothing
         """
-        pass
+        path = self.base_path.format("default.json")
+        f = open(path)
+        replacements = json.load(f)
+        f.close()
+
+        # normalization with replacements rules & cast to integer
+        for col in replacements:
+            self.df = self.df.replace(to_replace=replacements[col])
+            self.df = self.df.astype({col: 'int'})
+
+        ds = Dataset()
+        ds.store_dataframe(self.df, path='dataset/data_normalized.{}')

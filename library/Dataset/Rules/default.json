@@ -1,0 +1,23 @@
+{
+    "Checking account": {"A11": 1, "A12": 2, "A13": 3, "A14": 4},
+    "Duration": {},
+    "Credit history": {"A30": 0, "A31": 1, "A32": 2, "A33": 3, "A34": 4},
+    "Purpose":{"A40": 0, "A41": 1, "A42": 2, "A43": 3, "A44": 4, "A45": 5, "A46": 6, "A47": 7, "A48": 8, "A49": 9, "A410": 10},
+    "Credit amount": {},
+    "Savings account": {"A61": 1, "A62": 2, "A63": 3, "A64": 4, "A65": 5},
+    "Employment since": {"A71": 1, "A72": 2, "A73": 3, "A74": 4, "A75": 5},
+    "Installment rate": {},
+    "Status & sex": {"A91": 1, "A92": 2, "A93": 3, "A94": 4, "A95": 5},
+    "Debtors & guarantors": {"A101": 1, "A102": 2, "A103": 3},
+    "Residence since": {},
+    "Property": {"A121": 1, "A122": 2, "A123": 3, "A124": 4},
+    "Age": {},
+    "Other installments": {"A141": 1, "A142": 2, "A143": 2},
+    "Housing": {"A151": 1, "A152": 2, "A153": 3},
+    "Existing credits": {},
+    "Job": {"A171": 1, "A172":2, "A173": 3, "A174": 4},
+    "Kept people": {},
+    "Phone": {"A191": 1, "A192": 2},
+    "Foreign worker": {"A201": 1, "A202": 2},
+    "Target": {}
+}
