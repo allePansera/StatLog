@@ -51,7 +51,7 @@ class Training:
             self.logger.info("Normalizing dataset...")
             normalizer = Normalization(df)
             start = time.time()
-            df = normalizer.execute()
+            df = normalizer.execute(save=True)
             end = time.time()
             self.logger.info(f"Normalization concluded in {round(end - start, 2)}sec")
 

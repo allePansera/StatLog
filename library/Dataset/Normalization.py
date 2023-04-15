@@ -139,4 +139,5 @@ class Normalization:
             self.df = self.df.astype({col: 'int'})
 
         ds = Dataset()
-        ds.store_dataframe(self.df, path='dataset/data_normalized.{}')
+        if save:
+            ds.store_dataframe(self.df, path='dataset/data_normalized.{}')

@@ -1,0 +1,24 @@
+html, body {
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.card {
+    margin: auto;
+    float: none; /* Added */
+    margin-bottom: 10px; /* Added */
+    margin-top: 50px;
+}
+
+img {
+    display:inline-block;
+}
+
+select {
+    width: 100%;
+}
+
+.response {
+    height: 200px;
+    position: relative;
+}

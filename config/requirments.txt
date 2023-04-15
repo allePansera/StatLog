@@ -4,3 +4,5 @@ seaborn
 plotly
 sklearn
 joblib
+flask
+flask_classful

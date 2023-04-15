@@ -16,16 +16,16 @@ class RandomForest:
         tr_size = int(df.shape[0] * split_percentage)
         self.df_training, self.df_testing = np.split(df, [tr_size], axis=0)
         self.training_undersample()
-        self.x_training = self.df_training.iloc[:, 1:len(self.df_training.keys())-1].values
+        self.x_training = self.df_training.iloc[:, :len(self.df_training.keys())-1].values
         self.y_training = self.df_training.iloc[:, len(self.df_training.keys())-1:len(self.df_training.keys())].values
-        self.x_testing = self.df_testing.iloc[:, 1:len(self.df_testing.keys()) - 1].values
+        self.x_testing = self.df_testing.iloc[:, :len(self.df_testing.keys()) - 1].values
         self.y_testing = self.df_testing.iloc[:, len(self.df_testing.keys())-1:len(self.df_testing.keys())].values
         self.classifier = None
         self.max_depth = 50
         self.n_estimators = 100
 
     def save_classifier(self, path='classifier/rf.{}'):
-        joblib.dump(self.classifier, path.format(".joblib"))
+        joblib.dump(self.classifier, path.format("joblib"))
 
     def training_undersample(self):
         """

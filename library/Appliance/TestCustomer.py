@@ -122,25 +122,74 @@
 
 """
 import pandas as pd
-import json
+import numpy as np
+import json, joblib
+from datetime import datetime
+from library.Dataset.Normalization import Normalization
 
 
 class TestCustomer:
     def __init__(self):
-        self.default_path = "library/Training/Rules/default.json"
+        """
+        Constructor loads default features to be asked.
+        """
+        self.default_path = "library/Dataset/Rules/default.json"
+        self.classifier_path = "classifier/rf.joblib"
+        self.history_path = "history/input_{}.json"
+        self.classifier = joblib.load(self.classifier_path)
         f = open(self.default_path)
         self.values = json.load(f)
+        f.close()
+
+    def store_df(self, df: pd.DataFrame):
+        """
+        This method is used to store a 'handmade' DataFrame.
+        store_df() allows to dynamically retrain the ML model.
+        :param df: DataFrame row
+        :return: Nothing
+        """
+        timestamp = datetime.now().strftime("%d%m%Y_%H%M%S")
+        filename = self.history_path.format(timestamp)
+        f = open(filename, "w")
+        df.to_json(f)
         f.close()
 
     def ask_4_values(self):
         """
         This method is used to ask feature value to the customer 4 tests
-        :return: Nothing
+        :return: answer structured in order to be read from predict() method. DataFrame is normalized.
         """
         answer = {}
         for param in self.values:
             if param != 'Target':
                 answer[param] = input(f'Enter {param}:\n')
 
-        print(answer)
+        return self.normalize(answer)
+
+    def normalize(self, answer_dict: dict):
+        """
+        Given a dict this method normalize it and produce the df used from ml model
+        :param answer_dict: answer dict {key:value}
+        :return: DataFrame normalized
+        """
+        answer = {}
+        for param in self.values:
+            answer[param] = answer_dict.get(param, 0)
+
+        series = np.fromiter(answer.values(), dtype='object')
+        columns = answer.keys()
+        df = pd.DataFrame(data=[series], columns=columns)
+        normalizer = Normalization(df)
+        df = normalizer.execute()
+        df.pop('Target')
+        return df
+
+    def predict(self, feature_values: pd.DataFrame):
+        """
+        This method is used to predict customer reliability.
+        :param feature_values: it's the input values used to predict customer trust
+        :return: integer value: 1 - Good borrower; 2 - Bad borrower
+        """
+        y_predicted = self.classifier.predict(feature_values)
+        return y_predicted
 
