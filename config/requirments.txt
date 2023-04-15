@@ -1,8 +1,9 @@
 openpyxl
 pandas
+numpy==1.23.5
 seaborn
 plotly
 scikit-learn
-joblib
+joblib==1.2.0
 flask
 flask_classful
