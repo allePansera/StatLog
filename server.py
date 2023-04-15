@@ -17,7 +17,7 @@ def clone_master():
         repo = git.Repo(f"./")
         origin = repo.remotes.origin
         repo.create_head(f'{branch_name}',
-                         origin.refs.Testing).set_tracking_branch(origin.refs.master).checkout()
+                         origin.refs.master).set_tracking_branch(origin.refs.master).checkout()
         origin.pull()
         # conclusa la sincronizzazione con git hub ritorno un success
         return f"Sincronizzazione conclusa con successo", 200
