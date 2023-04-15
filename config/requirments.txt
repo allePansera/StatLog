@@ -2,7 +2,7 @@ openpyxl
 pandas
 seaborn
 plotly
-sklearn
+scikit-learn
 joblib
 flask
 flask_classful
