@@ -119,29 +119,28 @@ Features:
               A191 : none
               A192 : yes, registered under the customers name
 
-    Attribute 20: Foreign worker (qualitative)
+    - Attribute 20: Foreign worker (qualitative)
               
               A201 : yes
               A202 : no
-
 Evaluation:
 
-- This dataset requires use of a cost matrix:
+    - This dataset requires use of a cost matrix:
 
 
-        1        2
-  -----------------------
-    1   0        1
-  -----------------------
-    2   5        0
+          |  1   |   2  |
+        ----------------|
+        1 |  0   |   1  |
+        ----------------|
+        2 |  5   |   0  |
 
-  (1 = Good,  2 = Bad)
+        (1 = Good,  2 = Bad)
 
-  the rows represent the actual classification and the columns
-  the predicted classification.
+        the rows represent the actual classification and the columns
+        the predicted classification.
 
-It is worse to class a customer as good when they are bad (5),
-than it is to class a customer as bad when they are good (1).
+        It is worse to class a customer as good when they are bad (5),
+        than it is to class a customer as bad when they are good (1).
 
 
 
