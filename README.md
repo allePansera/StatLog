@@ -150,7 +150,8 @@ Categorical variables are acctually classified with integer values under the Rep
         cat = A201 -> int(cat[-2:])
     ```
 
-- ToDo: apply a upsampling techniques that use a Nearest Neighbour techinque.
+Oversampling K-SMOTE and SVM-SMOTE techinques are also implemented but not used. The f1-score is better but the imprecision of 'Bad borrower' class is greater than undersampling so oversampling is not used.
+
 ## Web View
 There i a website to test out the ML model capabilities.
 Ref.: [https://apanseratesting.pythonanywhere.com/](http://apanseratesting.pythonanywhere.com/page/home)
