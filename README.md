@@ -146,9 +146,9 @@ Evaluation:
 
 ### Algorithm
 The used algorithm is Random Forest which belogns to Ensemble algorithm family. The main focus is based on the dataset. Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less rappresented. In order to balance the dataset it's used the undersampling techinque and it's applied a weight to 'Good borrower' class.
-Categorical variables are acctually classified with integer values under the Replacing techinque. The corrisponding value for a categorical attribute is described as: ```
-cat = A201 -> int(cat[-2:])
-```
+Categorical variables are acctually classified with integer values under the Replacing techinque. The corrisponding value for a categorical attribute is described as: <br />       ```
+        cat = A201 -> int(cat[-2:])
+    ```
 
 - ToDo: apply a upsampling techniques that use a Nearest Neighbour techinque.
 ## Web View
