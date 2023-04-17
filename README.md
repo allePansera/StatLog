@@ -154,6 +154,7 @@ Oversampling K-SMOTE and SVM-SMOTE techinques are also implemented but not used.
 Current F1-score: 80%
 Current 'Bad borrower' class accuracy: 72% (35% KSMOTE and 55% SVMSMOTE)
 
+- TODO: write doc with different model comparison.
 ## Web View
 There i a website to test out the ML model capabilities.
 Ref.: [https://apanseratesting.pythonanywhere.com/](http://apanseratesting.pythonanywhere.com/page/home)
