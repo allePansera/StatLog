@@ -1,8 +1,10 @@
 import joblib
 import pandas as pd
 import numpy as np
+from collections import Counter
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, f1_score
+from imblearn.over_sampling import SVMSMOTE, KMeansSMOTE
 from library.Exceptions.CustomExceptions import TrainingException
 
 
@@ -15,6 +17,7 @@ class RandomForest:
         """
         tr_size = int(df.shape[0] * split_percentage)
         self.df_training, self.df_testing = np.split(df, [tr_size], axis=0)
+        # UNDERSAMPLE:
         self.training_undersample()
         self.x_training = self.df_training.iloc[:, :len(self.df_training.keys())-1].values
         self.y_training = self.df_training.iloc[:, len(self.df_training.keys())-1:len(self.df_training.keys())].values
@@ -23,6 +26,10 @@ class RandomForest:
         self.classifier = None
         self.max_depth = 50
         self.n_estimators = 100
+        # OVERSAMPLE:
+        # self.training_oversample_k_smote()
+        # self.training_oversample_svm_smote()
+
 
     def save_classifier(self, path='classifier/rf.{}'):
         joblib.dump(self.classifier, path.format("joblib"))
@@ -35,6 +42,22 @@ class RandomForest:
         """
         n_max = min(self.df_training['Target'].value_counts()[1], self.df_training['Target'].value_counts()[2])
         self.df_training = self.df_training.groupby('Target').apply(lambda x: x.sample(n=min(n_max, len(x))))
+
+    def training_oversample_k_smote(self):
+        """
+        This method perform K_SMOTE Technique un order to generate more samples to balance class.
+        :return: Nothing
+        """
+        oversample = KMeansSMOTE()
+        self.x_training, self.y_training = oversample.fit_resample(self.x_training, self.y_training)
+
+    def training_oversample_svm_smote(self):
+        """
+        This method perform SVM_SMOTE Technique un order to generate more samples to balance class.
+        :return: Nothing
+        """
+        oversample = SVMSMOTE()
+        self.x_training, self.y_training = oversample.fit_resample(self.x_training, self.y_training)
 
     def train(self):
         """
