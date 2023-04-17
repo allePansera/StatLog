@@ -150,7 +150,9 @@ Categorical variables are acctually classified with integer values under the Rep
         cat = A201 -> int(cat[-2:])
     ```
 
-Oversampling K-SMOTE and SVM-SMOTE techinques are also implemented but not used. The f1-score is better but the imprecision of 'Bad borrower' class is greater than undersampling so oversampling is not used.
+Oversampling K-SMOTE and SVM-SMOTE techinques are also implemented but not used. The f1-score is better but the imprecision of 'Bad borrower' class is greater than undersampling so oversampling is not used.</br>
+Current F1-score: 80%
+Current 'Bad borrower' class accuracy: 72% (35% KSMOTE and 55% SVMSMOTE)
 
 ## Web View
 There i a website to test out the ML model capabilities.
