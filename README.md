@@ -142,15 +142,19 @@ Evaluation:
         It is worse to class a customer as good when they are bad (5),
         than it is to class a customer as bad when they are good (1).
 
+        It's actually better to have a lower FP reather than a lower FN
+
 
 
 ### Algorithm
-The used algorithm is Random Forest which belogns to Ensemble algorithm family. The main focus is based on the dataset. Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less rappresented. In order to balance the dataset it's used the undersampling techinque and it's applied a weight to 'Good borrower' class.
-Categorical variables are acctually classified with integer values under the Replacing techinque. The corrisponding value for a categorical attribute is described as: <br />       ```
+The used algorithm is Random Forest which belongs to Ensemble algorithm family. The main focus is based on the dataset. Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less rappresented. In order to balance the dataset it's used the undersampling techinque and it's applied a weight to 'Good borrower' class.
+Categorical variables are actually classified with integer values under the Replacing technique. The corresponding value for a categorical attribute is described as: <br />       ```
         cat = A201 -> int(cat[-2:])
     ```
 
-Oversampling K-SMOTE and SVM-SMOTE techinques are also implemented but not used. The f1-score is better but the imprecision of 'Bad borrower' class is greater than undersampling so oversampling is not used.</br>
+Target var. 1 -> 0</br>
+Target var. 2 -> 1</br></br>
+Oversampling K-SMOTE and SVM-SMOTE techniques are also implemented but not used. The f1-score is better but the imprecision of 'Bad borrower' class is greater than under-sampling so over-sampling is not used.</br>
 Current F1-score: 80%
 Current 'Bad borrower' class accuracy: 72% (35% KSMOTE and 55% SVMSMOTE)
 
