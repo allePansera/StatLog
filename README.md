@@ -143,7 +143,7 @@ Evaluation:
         than it is to class a customer as bad when they are good (1).
 
         It's actually better to have a lower FP reather than a lower FN
-
+        We prefer precision to recall 'cause we want to minimize the FP.
 
 
 ### Algorithm

@@ -19,5 +19,5 @@
     "Kept people": {},
     "Phone": {"A191": 1, "A192": 2},
     "Foreign worker": {"A201": 1, "A202": 2},
-    "Target": {"1": 0, "2": 1}
+    "Target": {}
 }

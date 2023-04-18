@@ -134,6 +134,7 @@ class Normalization:
         f.close()
 
         # normalization with replacements rules & cast to integer
+
         for col in replacements:
             self.df = self.df.replace(to_replace=replacements[col])
             self.df = self.df.astype({col: 'int'})

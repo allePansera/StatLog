@@ -1,4 +1,6 @@
 import time, logging, os
+import traceback
+
 from library.Dataset.Dataset import Dataset
 from library.Dataset.Normalization import Normalization
 from library.Training.RandomForest import RandomForest
@@ -59,7 +61,7 @@ class Training:
             rf = RandomForest(df)
             start = time.time()
             rf.train()
-            cm, f1, good_borrow_precision, bad_borrow_precision, tpr, fpr = rf.test()
+            cm, f1, good_borrow_precision, bad_borrow_precision, fpr, precision = rf.test()
             end = time.time()
             self.logger.info(f"Classifier produced in {round(end - start, 2)}sec")
 
@@ -71,11 +73,12 @@ class Training:
             self.logger.info(f"F1 score: {f1}")
             self.logger.info(f"Good borrower prediction: {round(good_borrow_precision,2)}%")
             self.logger.info(f"Bad borrower prediction: {round(bad_borrow_precision,2)}%")
-            self.logger.info(f"TPR: {round(tpr, 2)*100}%")
             self.logger.info(f"FPR: {round(fpr, 2)*100}%")
+            self.logger.info(f"Precision: {round(precision, 2)*100}%")
 
             self.logger.info(f"Classifier stored...")
             self.logger.info("Training concluded...")
             self.release_logger()
         except Exception as e:
+            print(traceback.print_exc())
             self.logger.error(f"Error '{e}' while executing training...")

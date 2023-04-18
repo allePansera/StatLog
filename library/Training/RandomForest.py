@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from collections import Counter
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix, f1_score, roc_curve
+from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score
 from imblearn.over_sampling import SVMSMOTE, KMeansSMOTE
 from library.Exceptions.CustomExceptions import TrainingException
 
@@ -18,7 +18,7 @@ class RandomForest:
         tr_size = int(df.shape[0] * split_percentage)
         self.df_training, self.df_testing = np.split(df, [tr_size], axis=0)
         # UNDERSAMPLE:
-        self.training_undersample()
+        # self.training_undersample()
         self.x_training = self.df_training.iloc[:, :len(self.df_training.keys())-1].values
         self.y_training = self.df_training.iloc[:, len(self.df_training.keys())-1:len(self.df_training.keys())].values
         self.x_testing = self.df_testing.iloc[:, :len(self.df_testing.keys()) - 1].values
@@ -28,7 +28,7 @@ class RandomForest:
         self.n_estimators = 100
         # OVERSAMPLE:
         # self.training_oversample_k_smote()
-        # self.training_oversample_svm_smote()
+        self.training_oversample_svm_smote()
 
 
     def save_classifier(self, path='classifier/rf.{}'):
@@ -77,7 +77,7 @@ class RandomForest:
     def test(self):
         """
         test() check the result for the Random Forest classifier produced
-        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, tpr, fpr
+        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, fpr and precision
         """
         try:
             if self.classifier is None:
@@ -88,7 +88,8 @@ class RandomForest:
             f1 = f1_score(self.y_testing, y_predicted)
             precision_good_credit = (cm[0][0] / (cm[0][0] + cm[0][1])) * 100
             precision_bad_credit = (cm[1][1] / (cm[1][0] + cm[1][1])) * 100
-            fpr, tpr, threshold = roc_curve(self.y_testing, y_predicted)
-            return cm, f1, precision_good_credit, precision_bad_credit, tpr, fpr
+            tpr, fpr, threshold = roc_curve(self.y_testing, y_predicted, pos_label=1)
+            precision = precision_score(self.y_testing, y_predicted)
+            return cm, f1, precision_good_credit, precision_bad_credit, fpr[1], precision
         except Exception as e:
             raise TrainingException(f"Error '{e}' testing RandomForest classifier produced")

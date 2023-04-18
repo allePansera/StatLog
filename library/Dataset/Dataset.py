@@ -44,6 +44,7 @@ class Dataset:
         res = requests.get(self.url)
         data = [row.split(" ") for row in res.content.decode().split('\n')]
         df = pd.DataFrame(data=data[:-1], index=range(len(data)-1), columns=names)
+        df = df.astype(str)
         if save:
             self.store_dataframe(df)
         return df
