@@ -3,7 +3,7 @@ import pandas as pd
 import numpy as np
 from collections import Counter
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix, f1_score
+from sklearn.metrics import confusion_matrix, f1_score, roc_curve
 from imblearn.over_sampling import SVMSMOTE, KMeansSMOTE
 from library.Exceptions.CustomExceptions import TrainingException
 
@@ -77,7 +77,7 @@ class RandomForest:
     def test(self):
         """
         test() check the result for the Random Forest classifier produced
-        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision
+        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, tpr, fpr
         """
         try:
             if self.classifier is None:
@@ -88,6 +88,7 @@ class RandomForest:
             f1 = f1_score(self.y_testing, y_predicted)
             precision_good_credit = (cm[0][0] / (cm[0][0] + cm[0][1])) * 100
             precision_bad_credit = (cm[1][1] / (cm[1][0] + cm[1][1])) * 100
-            return cm, f1, precision_good_credit, precision_bad_credit
+            fpr, tpr, threshold = roc_curve(self.y_testing, y_predicted)
+            return cm, f1, precision_good_credit, precision_bad_credit, tpr, fpr
         except Exception as e:
             raise TrainingException(f"Error '{e}' testing RandomForest classifier produced")
