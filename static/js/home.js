@@ -24,7 +24,11 @@ $(document).ready(function(){
                 processData: false,
                 data : fd,
                 success : function(data) {
-                    alert('Data: '+data.code);
+                    let tag = $("#response");
+                    let response = parseInt(data.code) == 1 ? "Good borrower" : "Bad borrower";
+                    let response_color = parseInt(data.code) == 1 ? "bg-success" : "bg-danger";
+                    tag.attr("class",response_color);
+                    tag.html(response);
                 },
                 error : function(request,error) {
                     alert("Request: "+JSON.stringify(request));
