@@ -12,7 +12,6 @@ $('img').css('display', 'block');
 $(document).ready(function(){
     $('#form').submit(function(event) {
         event.preventDefault();
-        console.log($("#form").valid())
         if($("#form").valid()){
             let fd = new FormData(event.currentTarget);
             $.ajax({
@@ -24,7 +23,7 @@ $(document).ready(function(){
                 processData: false,
                 data : fd,
                 success : function(data) {
-                    let tag = $("#response");
+                    let tag = $("#result");
                     let response = parseInt(data.code) == 1 ? "Good borrower" : "Bad borrower";
                     let response_color = parseInt(data.code) == 1 ? "bg-success" : "bg-danger";
                     tag.attr("class",response_color);
