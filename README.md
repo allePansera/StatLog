@@ -154,10 +154,10 @@ Categorical variables are actually classified with integer values under the Repl
 
 
 Oversampling K-SMOTE and undersample techniques are also implemented but not used. <br>
-The SVM_SMOTE F1-Score is similar to the undersample one but the real improvements are Precision and FPR parameters.</br>
-Current F1-score: 85%
-Current FPR: 15%
-Current Precision: 83%
+The SVM_SMOTE F1-Score and Precision are similar to the undersample ones but the real improvement is FPR parameter.</br>
+Current F1-score: 84%
+Current FPR: 13%
+Current Precision: 82%
 
 Confusion Matrix images are linked at: [graph comparison](/classifier/doc)
 ## Web View
