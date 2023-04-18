@@ -147,18 +147,19 @@ Evaluation:
 
 
 ### Algorithm
-The used algorithm is Random Forest which belongs to Ensemble algorithm family. The main focus is based on the dataset. Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less rappresented. In order to balance the dataset it's used the undersampling techinque and it's applied a weight to 'Good borrower' class.
+The used algorithm is Random Forest which belongs to Ensemble algorithm family. The main focus is based on the dataset. Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less represented. In order to balance the dataset it's used the SVM SMOTE technique which oversample the less rappresented class.
 Categorical variables are actually classified with integer values under the Replacing technique. The corresponding value for a categorical attribute is described as: <br />       ```
         cat = A201 -> int(cat[-2:])
     ```
 
-Target var. 1 -> 0</br>
-Target var. 2 -> 1</br></br>
-Oversampling K-SMOTE and SVM-SMOTE techniques are also implemented but not used. The f1-score is better but the imprecision of 'Bad borrower' class is greater than under-sampling so over-sampling is not used.</br>
-Current F1-score: 80%
-Current 'Bad borrower' class accuracy: 72% (35% KSMOTE and 55% SVMSMOTE)
 
-- TODO: write doc with different model comparison.
+Oversampling K-SMOTE and undersample techniques are also implemented but not used. <br>
+The SVM_SMOTE F1-Score is similar to the undersample one but the real improvements are Precision and FPR parameters.</br>
+Current F1-score: 85%
+Current FPR: 15%
+Current Precision: 83%
+
+Confusion Matrix images are linked at: [a workaround link](/classifier/doc)
 ## Web View
 There i a website to test out the ML model capabilities.
 Ref.: [https://apanseratesting.pythonanywhere.com/](http://apanseratesting.pythonanywhere.com/page/home)
