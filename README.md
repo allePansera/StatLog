@@ -159,7 +159,7 @@ Current F1-score: 85%
 Current FPR: 15%
 Current Precision: 83%
 
-Confusion Matrix images are linked at: [a workaround link](/classifier/doc)
+Confusion Matrix images are linked at: [graph comparison](/classifier/doc)
 ## Web View
 There i a website to test out the ML model capabilities.
 Ref.: [https://apanseratesting.pythonanywhere.com/](http://apanseratesting.pythonanywhere.com/page/home)
