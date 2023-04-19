@@ -4,7 +4,7 @@ This ML poject estimates is a customer is a good or bad borrower. It estimates t
 The dataset was donated in 1994. It's made of 20 attributes 13 categorical and 7 numerical. There are 1000 samples.
 Ref.: https://archive-beta.ics.uci.edu/dataset/144/statlog+german+credit+data
 ## ML Model
-The ML model used is the Random Forest and it's trained using under-sample techiniques due to class unbalance and different class weight.
+The ML model used is the Random Forest and it's trained using under-sample techniques due to class unbalance and different class weight.
 ### Data description
 Features:
 
