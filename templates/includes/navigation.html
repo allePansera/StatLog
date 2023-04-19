@@ -1,0 +1,48 @@
+
+    <header class="header-global">
+        <nav id="navbar-main" aria-label="Primary navigation" class="navbar navbar-main navbar-expand-lg navbar-theme-primary headroom navbar-dark">
+            <div class="container position-relative">
+                <div class="navbar-collapse collapse me-auto" id="navbar_global">
+                    <div class="navbar-collapse-header">
+                        <div class="row">
+                            <div class="col-6 collapse-brand">
+                                <img src="/static/assets/img/brand/dark.svg" alt="Themesberg logo">
+                            </div>
+                            <div class="col-6 collapse-close">
+                                <a href="#navbar_global" class="fas fa-times" data-bs-toggle="collapse" data-bs-target="#navbar_global" aria-controls="navbar_global" aria-expanded="false" title="close" aria-label="Toggle navigation"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav navbar-nav-hover align-items-lg-center">
+                        <li class="nav-item dropdown">
+                            <a href="#" class="nav-link dropdown-toggle" id="frontPagesDropdown" aria-expanded="false" data-bs-toggle="dropdown">
+                                Pages
+                                <span class="fas fa-angle-down nav-link-arrow ms-1"></span>
+                            </a>
+                            <div class="dropdown-menu dropdown-megamenu px-0 py-2 p-lg-4" aria-labelledby="frontPagesDropdown">
+                                <div class="row">
+                                    <div class="col-6 col-lg-4">
+                                        <h6 class="d-block mb-3 text-primary">M.L.</h6>
+                                        <ul class="list-style-none mb-4">
+                                            <li class="mb-2 megamenu-item">
+                                                <a class="megamenu-link" href="{{ url_for('PageView:stat_log') }}">German Stat Log</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-6 col-lg-4">
+                                        <h6 class="d-block mb-3 text-primary">Other</h6>
+                                        <ul class="list-style-none mb-4">
+                                            <li class="mb-2 megamenu-item">
+                                                <a class="megamenu-link" href="#">OLAP Cubes</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
