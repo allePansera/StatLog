@@ -78,12 +78,12 @@ class Training:
             if hasattr(cl.get_classifier(), "feature_importances_"):
                 feature_importance(cl.get_classifier().feature_importances_)
             # USELESS: correlation_plt(df)
-            cl.save_classifier()
+            # cl.save_classifier()
 
             self.logger.info(f"F1 score: {f1}")
             self.logger.info(f"Good borrower prediction: {round(good_borrow_precision,2)}%")
             self.logger.info(f"Bad borrower prediction: {round(bad_borrow_precision,2)}%")
-            self.logger.info(f"FPR: {round(fpr, 2)*100}%")
+            self.logger.info(f"FDR: {round(fpr, 2)*100}%")
             self.logger.info(f"Precision: {round(precision, 2)*100}%")
 
             self.logger.info(f"Classifier stored...")
