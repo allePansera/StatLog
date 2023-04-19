@@ -1,13 +1,13 @@
 import joblib
 import pandas as pd
 import numpy as np
-from sklearn.ensemble import RandomForestClassifier
+from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score
 from library.Exceptions.CustomExceptions import TrainingException
 from library.Training.Sampler import Sampler
 
 
-class RandomForest:
+class LogicalRegression:
     def __init__(self, df: pd.DataFrame, oversample_tech, split_percentage=0.9):
         """
         Constructor split DataSet into training and testing samples
@@ -37,11 +37,7 @@ class RandomForest:
         :return:
         """
         try:
-            self.classifier = RandomForestClassifier(n_estimators=self.n_estimators,
-                                                     max_depth=self.max_depth,
-                                                     n_jobs=10,
-                                                     criterion="gini",
-                                                     class_weight={1: 1, 2: 5})
+            self.classifier = LogisticRegression(random_state=0, solver='newton-cholesky')
             self.classifier.fit(self.x_training, self.y_training.ravel())
         except Exception as e:
             raise TrainingException(f"Error '{e}' training dataset with RandomForest classifier")
