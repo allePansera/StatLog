@@ -147,21 +147,26 @@ Evaluation:
 
 
 ### Algorithm
-The used algorithm is Random Forest which belongs to Ensemble algorithm family. The main focus is based on the dataset. Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less represented. In order to balance the dataset it's used the SVM SMOTE technique which oversample the less rappresented class.
+The used algorithm is Random Forest which belongs to Ensemble algorithm family. The main focus is based on the dataset.</br> 
+Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less represented.</br>
+In order to balance the dataset it's used the SVM SMOTE technique which oversample the less represented class.</br>
 Categorical variables are actually classified with integer values under the Replacing technique. The corresponding value for a categorical attribute is described as: <br />       ```
         cat = A201 -> int(cat[-2:])
     ```
+Logical Regression model is also implemented but not suggested due to its high FDR.</br>
+Oversampling K-SMOTE, ADASYN and undersample techniques are also implemented but not suggested. K-SMOTE has higher PRECISION and lower FDR but it's not used 'cause it's to poor with TrueNegative detection (poor Recall).<br>
+ADASYN and SVM are pretty similar but SVM is slightly better for FDR and F1-Score.</br>
 
-
-Oversampling K-SMOTE, ADASYN and undersample techniques are also implemented but not used. <br>
-The SVM_SMOTE F1-Score and Precision are similar to the undersample ones but the real improvement is FPR parameter. ADASYN and SVM are pretty similar but SVM is slightly better for FPR and F1-Score.</br>
-Current F1-score: 84%
-Current FPR: 13%
-Current Precision: 82%
+Current F1-SCORE: 84%
+Current Precision: 87%
+Current FDR: 13%
+Current Recall/Sensitivity: 82%
+Current Classifier: Random forrest
+Oversampling technique:: SVM SMOTE
 
 Confusion Matrix images are linked at: [graph comparison](/classifier/doc)
 ## Web View
 There i a website to test out the ML model capabilities.
-Ref.: [https://apanseratesting.pythonanywhere.com/page/home](http://apanseratesting.pythonanywhere.com/page/stat_log)
+Ref.: [https://apanseratesting.pythonanywhere.com/page/stat_log](http://apanseratesting.pythonanywhere.com/page/stat_log)
 
 
