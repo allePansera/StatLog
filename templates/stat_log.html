@@ -1,0 +1,330 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} German Stat Log {% endblock %}
+
+<!-- Specific Page CSS goes HERE  -->
+{% block stylesheets %}
+<link rel="stylesheet" href="{{url_for('static', filename='css/home.css')}}">
+{% endblock stylesheets %}
+
+{% block content %}
+<main>
+    <!-- Hero -->
+    <section class="section-header bg-secondary text-white">
+        <div class="container">
+            <div class="row justify-content-between align-items-center">
+                <!-- Header -->
+                <div class="row text-center">
+                    <h2 style="text-align: center; display: inline-block; width: 100%">NOT THE <u>BEST</u> BUT NOT EVEN
+                        THE <u>WORST</u></h2>
+                    <h5 class="mt-3">This ML algo might not be the
+                        brightest one but will make better prediction than theirs.</h5>
+                    <!-- Img -->
+                    <div class="row align-content-center text-center mt-5" >
+                        <div class="col">
+                            <img width="150" height="150"
+                                 src="https://pyxis.nymag.com/v1/imgs/c0c/188/58f61d30270c7e1f22b9f69562681e4954-24-dickfuld.rsquare.w330.jpg"
+                                 alt="Boy1">
+                            <div><i>Richard Severin Fuld</i><br> CEO Lehman Brothers</div>
+                        </div>
+                        <div class="col">
+                            <img width="150" height="150"
+                                 src="https://i2.res.24o.it/images2010/Editrice/ILSOLE24ORE/ILSOLE24ORE/2017/07/27/Finanza%20e%20Mercati/ImmaginiWeb/Ritagli/giovanni-zonin-Imagoeconomica-kJ9B--258x258@IlSole24Ore-Web.jpg"
+                                 alt="Boy2">
+                            <div><i>Giovanni Zonin</i><br> Pres. Popolare di Vicenza</div>
+                        </div>
+                        <div class="col">
+                            <img width="150" height="150"
+                                 src="https://www.ansa.it/webimages/img_457x/2017/12/4/4d123d10d5064d516784bdddd3950dd5.jpg"
+                                 alt="boy3">
+                            <div><i>Pier Luigi Boschi</i><br> Vp Banca Etruria</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+    <!-- End of Hero section -->
+    <!-- Section -->
+    <section class="section section-md">
+        <div class="container">
+            <!-- Description -->
+            <div class="row text-center mt-3">
+                <div class="text-center align-content-center mt-3">
+                    RandomForest ensemble algorithm to predict good/bad borrower.
+                </div>
+            </div>
+            <form id="form" method="post">
+                <!-- Request body -->
+                <div class="row">
+
+                    <!-- Financial Score -->
+                    <div class="card center col-3" style="width: 30%">
+                        <div class="card-header">
+                            Financial score
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Checking account">Checking account balance</label>
+                                    <select id="Checking account" name="Checking account" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A11"> ... < 0 €</option>
+                                        <option value="A12"> 0 <= ... < 100k €</option>
+                                        <option value="A13"> 100k € <= ...</option>
+                                        <option value="A14"> No checking account</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Credit history">Credit history</label>
+                                    <select id="Credit history" name="Credit history" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A30"> No credits taken / all credits paid back duly</option>
+                                        <option value="A31"> All credits at this bank paid back duly</option>
+                                        <option value="A32"> Existing credits paid back duly till now</option>
+                                        <option value="A33"> Delay in paying off in the past</option>
+                                        <option value="A34"> Critical account / other credits existing (not at this
+                                            bank)
+                                        </option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Savings account">Savings account</label>
+                                    <select id="Savings account" name="Savings account" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A61"> ... < 10k €</option>
+                                        <option value="A62"> 10k € <= ... < 50k €</option>
+                                        <option value="A63"> 50k € <= ... < 100k €</option>
+                                        <option value="A64"> .. >= 100k €</option>
+                                        <option value="A65"> Unknown / no savings account</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Property">Property</label>
+                                    <select id="Property" name="Property" class="form-select" aria-label="Choose.."
+                                            required>
+                                        <option value="A121"> Real estate</option>
+                                        <option value="A122"> Savings agreement / life insurance</option>
+                                        <option value="A123"> Car or other</option>
+                                        <option value="A124"> Unknown / no property</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Housing">Housing</label>
+                                    <select id="Housing" name="Housing" class="form-select" aria-label="Choose.."
+                                            required>
+                                        <option value="A151"> Rent</option>
+                                        <option value="A152"> Own</option>
+                                        <option value="A153"> For free</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Existing credits">Existing credits (k €)</label>
+                                    <input type="number" id="Existing credits" name="Existing credits"
+                                           class="form-control" min="0" step="1" required>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Job">Job</label>
+                                    <select id="Job" name="Job" class="form-select" aria-label="Choose.." required>
+                                        <option value="A171"> Unemployed / unskilled - Non Resident</option>
+                                        <option value="A172"> Unskilled - Resident</option>
+                                        <option value="A173"> Skilled employee / Official</option>
+                                        <option value="A174"> Management / Self-employed / Highly qualified / Officer
+                                        </option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Employment since">Employment since</label>
+                                    <select id="Employment since" name="Employment since" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A71"> Unemployed</option>
+                                        <option value="A72"> ... < 1 year</option>
+                                        <option value="A73"> 1 <= ... < 4 years</option>
+                                        <option value="A74"> 4 <= ... < 7 years</option>
+                                        <option value="A75"> ... >= 7 years</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Requirements -->
+                    <div class="card center col-3" style="width: 30%">
+                        <div class="card-header">
+                            Requirements
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Duration">Duration (month)</label>
+                                    <input type="number" id="Duration" min="0" step="1" name="Duration"
+                                           class="form-control" required>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Purpose">Purpose</label>
+                                    <select id="Purpose" name="Purpose" class="form-select" aria-label="Choose.."
+                                            required>
+                                        <option value="A40"> New car</option>
+                                        <option value="A41"> Used car</option>
+                                        <option value="A42"> Furniture / Equipment</option>
+                                        <option value="A43"> Television / Smartphone</option>
+                                        <option value="A44"> Domestic appliances</option>
+                                        <option value="A45"> Repairs</option>
+                                        <option value="A46"> Education</option>
+                                        <option value="A47"> Vacation</option>
+                                        <option value="A48"> Retraining</option>
+                                        <option value="A49"> Business</option>
+                                        <option value="A50"> Others</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Credit amount">Credit amount (k €)</label>
+                                    <input type="number" id="Credit amount" name="Credit amount" min="0" step="1"
+                                           class="form-control" required>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Installment rate">Installment rate on income (%)</label>
+                                    <input type="number" id="Installment rate" name="Installment rate" min="0" step="1"
+                                           class="form-control" required>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Debtors & guarantors">Guarantors</label>
+                                    <select id="Debtors & guarantors" name="Debtors & guarantors" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A101"> None</option>
+                                        <option value="A102"> Co-Applicant</option>
+                                        <option value="A103"> Guarantor</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Other installments">Other installments</label>
+                                    <select id="Other installments" name="Other installments" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A141"> Bank</option>
+                                        <option value="A142"> Stores</option>
+                                        <option value="A143"> None</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- Other -->
+                    <div class="card center col-3" style="width: 30%">
+                        <div class="card-header">
+                            Other
+                        </div>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Age">Age (year)</label>
+                                    <input type="number" id="Age" min="0" step="1" name="Age" class="form-control"
+                                           required>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Residence since">Residence since (n. of year)</label>
+                                    <input type="number" id="Residence since" min="0" step="1" name="Residence since"
+                                           class="form-control" required>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Kept people">Kept people</label>
+                                    <input type="number" id="Kept people" min="0" step="1" name="Kept people"
+                                           class="form-control" required>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Status & sex">Status & sex</label>
+                                    <select id="Status & sex" name="Status & sex" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A91"> Male : divorced / separated</option>
+                                        <option value="A92"> Female : divorced / separated / married</option>
+                                        <option value="A93"> Male : single</option>
+                                        <option value="A94"> Male : married/widowed</option>
+                                        <option value="A95"> Female : single</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Phone">Telephone</label>
+                                    <select id="Phone" name="Phone" class="form-select" aria-label="Choose.." required>
+                                        <option value="A191"> None</option>
+                                        <option value="A192"> Yes, registered under the customers name</option>
+                                    </select>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="col-12">
+                                    <label for="Foreign worker">Foreign worker</label>
+                                    <select id="Foreign worker" name="Foreign worker" class="form-select"
+                                            aria-label="Choose.." required>
+                                        <option value="A201"> Yes</option>
+                                        <option value="A202"> No</option>
+                                    </select>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+                <!-- Result -->
+                <div class="response">
+                    <div class="align-center" style="text-align: center">
+                        <button type="submit" class="btn btn-secondary" id="check">
+                            Check reliability
+                        </button>
+                    </div>
+                    <br>
+                    <div id="result">
+
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+    <!-- End of section -->
+</main>
+
+</body>
+
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.4/jquery.min.js"
+        integrity="sha512-pumBsjNRGGqkPzKHndZMaAG+bir374sORyzM3uulLV14lN5LyykqNk8eEeUlUkB3U0M4FApyaHraT65ihJhDpQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
+<!-- Custom script -->
+<script src="{{url_for('static', filename='js/home.js')}}"></script>
+{% endblock javascripts %}

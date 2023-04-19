@@ -4,6 +4,9 @@ from flask import render_template, request
 
 class PageView(FlaskView):
 
-    @route('/home')
-    def home(self):
-        return render_template("home.html")
+    def index(self):
+        return render_template("landing_page.html")
+
+    @route('/stat_log')
+    def stat_log(self):
+        return render_template("stat_log.html")
