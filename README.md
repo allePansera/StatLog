@@ -153,8 +153,8 @@ Categorical variables are actually classified with integer values under the Repl
     ```
 
 
-Oversampling K-SMOTE and undersample techniques are also implemented but not used. <br>
-The SVM_SMOTE F1-Score and Precision are similar to the undersample ones but the real improvement is FPR parameter.</br>
+Oversampling K-SMOTE, ADASYN and undersample techniques are also implemented but not used. <br>
+The SVM_SMOTE F1-Score and Precision are similar to the undersample ones but the real improvement is FPR parameter. ADASYN and SVM are pretty similar but SVM is slightly better for FPR and F1-Score.</br>
 Current F1-score: 84%
 Current FPR: 13%
 Current Precision: 82%

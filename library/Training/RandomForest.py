@@ -4,7 +4,7 @@ import numpy as np
 from collections import Counter
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score
-from imblearn.over_sampling import SVMSMOTE, KMeansSMOTE
+from imblearn.over_sampling import SVMSMOTE, KMeansSMOTE, ADASYN
 from library.Exceptions.CustomExceptions import TrainingException
 
 
@@ -29,6 +29,7 @@ class RandomForest:
         # OVERSAMPLE:
         # self.training_oversample_k_smote()
         self.training_oversample_svm_smote()
+        # self.training_oversample_adasyn()
 
 
     def save_classifier(self, path='classifier/rf.{}'):
@@ -57,6 +58,14 @@ class RandomForest:
         :return: Nothing
         """
         oversample = SVMSMOTE()
+        self.x_training, self.y_training = oversample.fit_resample(self.x_training, self.y_training)
+
+    def training_oversample_adasyn(self):
+        """
+        This method perform ADASYN Technique un order to generate more samples to balance class.
+        :return: Nothing
+        """
+        oversample = ADASYN()
         self.x_training, self.y_training = oversample.fit_resample(self.x_training, self.y_training)
 
     def train(self):
