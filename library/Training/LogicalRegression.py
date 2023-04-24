@@ -5,9 +5,10 @@ from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score
 from library.Exceptions.CustomExceptions import TrainingException
 from library.Training.Sampler import Sampler
+from library.Training.Classifier import Classifier
 
 
-class LogicalRegression:
+class LogicalRegression(Classifier):
     def __init__(self, df: pd.DataFrame, oversample_tech, split_percentage=0.9):
         """
         Constructor split DataSet into training and testing samples
@@ -25,6 +26,7 @@ class LogicalRegression:
         self.max_depth = 50
         self.n_estimators = 100
         # UNDERSAMPLE or OVERSAMPLE:
+        self.oversample_tech = oversample_tech
         smp = Sampler(oversample_tech=oversample_tech)
         self.x_training, self.y_training = smp.execute(self.x_training, self.y_training)
 
@@ -45,12 +47,13 @@ class LogicalRegression:
     def test(self):
         """
         test() check the result for the Random Forest classifier produced
-        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, fpr and precision
+        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, fpr, precision, threshold, model
         """
         try:
             if self.classifier is None:
                 raise Exception('classifier still not produced')
 
+            model = f"{self.SUPPORTED_METHOD['LR']} - {self.SUPPORTED_SAMPLES[self.oversample_tech]}"
             y_predicted = self.classifier.predict(self.x_testing)
             cm = confusion_matrix(self.y_testing, y_predicted)
             f1 = f1_score(self.y_testing, y_predicted)
@@ -58,6 +61,6 @@ class LogicalRegression:
             precision_bad_credit = (cm[1][1] / (cm[1][0] + cm[1][1])) * 100
             tpr, fpr, threshold = roc_curve(self.y_testing, y_predicted, pos_label=1)
             precision = precision_score(self.y_testing, y_predicted)
-            return cm, f1, precision_good_credit, precision_bad_credit, fpr[1], precision
+            return cm, f1, precision_good_credit, precision_bad_credit, fpr[1], precision, threshold, model
         except Exception as e:
             raise TrainingException(f"Error '{e}' testing RandomForest classifier produced")

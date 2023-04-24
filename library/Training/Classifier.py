@@ -1,11 +1,14 @@
 import numpy as np
 import pandas as pd
-from library.Training.RandomForest import RandomForest
-from library.Training.LogicalRegression import LogicalRegression
 from library.Exceptions.CustomExceptions import TrainingException
 
 
 class Classifier:
+    SUPPORTED_METHOD = {"RF": "Random Forest", "LR": "Logical Regression"}
+    SUPPORTED_SAMPLES = {"US": "Undersample - Near Miss",
+                         "OS_K": "Oversample - K SMOTE",
+                         "OS_SVM": "Oversample - SVM SMOTE",
+                         "OS_ADASYN": "Oversample - ADASYN"}
     """
     Factory method implementation in order to change from code the TRAINING CLASSIFIER
     """
@@ -17,6 +20,8 @@ class Classifier:
         :param oversample_tech: over-sampling or under-sampling technique
         """
         self.method = method
+        from library.Training.RandomForest import RandomForest
+        from library.Training.LogicalRegression import LogicalRegression
         if self.method == "RF":
             self.cl = RandomForest(df, oversample_tech)
 
