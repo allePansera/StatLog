@@ -12,21 +12,26 @@ class Classifier:
     """
     Factory method implementation in order to change from code the TRAINING CLASSIFIER
     """
-    def __init__(self, df: pd.DataFrame, method, oversample_tech):
-        """
 
-        :param df: DataFrame used by the classifier method
-        :param method: classifier family
-        :param oversample_tech: over-sampling or under-sampling technique
+    def __init__(self, x_training, y_training, x_testing, y_testing, method, oversample_tech):
+        """
+        Constructor split DataSet into training and testing samples
+        :param x_training: feature values used for training
+        :param y_training: label values used for training
+        :param x_testing: feature values used for evaluation
+        :param y_testing: label values used for evaluation
+        :param method: it's used to decide which classifier train
+        :param oversample_tech: Over-sampling or under-sample technique to use
         """
         self.method = method
+        self.oversample_tech = oversample_tech
         from library.Training.RandomForest import RandomForest
         from library.Training.LogicalRegression import LogicalRegression
         if self.method == "RF":
-            self.cl = RandomForest(df, oversample_tech)
+            self.cl = RandomForest(x_training, y_training, x_testing, y_testing, oversample_tech)
 
         elif self.method == "LR":
-            self.cl = LogicalRegression(df, oversample_tech)
+            self.cl = LogicalRegression(x_training, y_training, x_testing, y_testing, oversample_tech)
 
         else:
             raise TrainingException(f"Classifier '{self.method}' not supported")
@@ -42,7 +47,7 @@ class Classifier:
     def test(self):
         return self.cl.test()
 
-    def save_classifier(self, path='classifier/rf.{}'):
+    def save_classifier(self, path='classifier/rf_{}_{}.{}'):
         return self.cl.save_classifier(path=path)
 
     def get_classifier(self):

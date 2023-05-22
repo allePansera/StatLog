@@ -1,6 +1,8 @@
 import time, logging, os
 import traceback
 
+import pandas as pd
+
 from library.Dataset.Dataset import Dataset
 from library.Dataset.Normalization import Normalization
 from library.Training.Classifier import Classifier
@@ -20,7 +22,7 @@ class Training:
         """
 
         logging.basicConfig(filename=logging_path,
-                            filemode='w',
+                            filemode='w+',
                             format='%(asctime)s %(levelname)-8s %(message)s',
                             datefmt='%d-%m-%Y %H:%M:%S',
                             level=logging.INFO)
@@ -40,10 +42,14 @@ class Training:
                 self.logger.removeHandler(handler)
                 handler.close()
 
-    def run(self):
+    def run(self, x_training, y_training, x_testing, y_testing):
         """
         run() method start training writing output to log file defined as a library attribute
-        :return: nothing
+        :param x_training: passed to the classifier
+        :param y_training: passed to the classifier
+        :param x_testing: passed to the classifier to evaluate performance
+        :param y_testing: passed to the classifier to evaluate performance
+        :return: F1, FDR, PRECISION, RECALL
         """
         try:
             self.logger.info("Starting...")
@@ -63,10 +69,13 @@ class Training:
             self.logger.info(f"Normalization concluded in {round(end - start, 2)}sec")
 
             self.logger.info(f"Classifier production - {self.method}...")
-            cl = Classifier(df, self.method, self.oversample_tech)
+            cl = Classifier(x_training=x_training, y_training=y_training,
+                            x_testing=x_testing, y_testing=y_testing,
+                            method=self.method,
+                            oversample_tech=self.oversample_tech)
             start = time.time()
             cl.train()
-            cm, f1, good_borrow_precision, bad_borrow_precision, fpr, precision, threshold, model = cl.test()
+            cm, f1, good_borrow_precision, bad_borrow_precision, fdr, precision, recall, threshold, model = cl.test()
             end = time.time()
             self.logger.info(f"Classifier produced in {round(end - start, 2)}sec")
 
@@ -79,13 +88,12 @@ class Training:
             # cl.save_classifier()
 
             self.logger.info(f"F1 score: {f1}")
-            self.logger.info(f"Good borrower prediction: {round(good_borrow_precision,2)}%")
-            self.logger.info(f"Bad borrower prediction: {round(bad_borrow_precision,2)}%")
-            self.logger.info(f"FDR: {round(fpr, 2)*100}%")
+            self.logger.info(f"FDR: {round(fdr, 2)*100}%")
             self.logger.info(f"Precision: {round(precision, 2)*100}%")
+            self.logger.info(f"Recall: {round(recall, 2) * 100}%")
 
-            self.logger.info(f"Classifier stored...")
             self.logger.info("Training concluded...")
             self.release_logger()
+            return f1, round(fdr, 2)*100, round(precision, 2)*100, round(recall, 2)*100
         except Exception as e:
             self.logger.error(f"Error '{e}' while executing training...")

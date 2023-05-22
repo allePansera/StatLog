@@ -2,26 +2,26 @@ import joblib
 import pandas as pd
 import numpy as np
 from sklearn.ensemble import RandomForestClassifier
-from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score
+from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score, recall_score
 from library.Exceptions.CustomExceptions import TrainingException
 from library.Training.Sampler import Sampler
 from library.Training.Classifier import Classifier
 
 
 class RandomForest(Classifier):
-    def __init__(self, df: pd.DataFrame, oversample_tech, split_percentage=0.9):
+    def __init__(self, x_training, y_training, x_testing, y_testing, oversample_tech):
         """
         Constructor split DataSet into training and testing samples
-        :param df: DataFrame to use
+        :param x_training: feature values used for training
+        :param y_training: label values used for training
+        :param x_testing: feature values used for evaluation
+        :param y_testing: label values used for evaluation
         :param oversample_tech: Over-sampling or under-sample technique to use
-        :param split_percentage: percentage used to split Dataset between training and testing
         """
-        tr_size = int(df.shape[0] * split_percentage)
-        self.df_training, self.df_testing = np.split(df, [tr_size], axis=0)
-        self.x_training = self.df_training.iloc[:, :len(self.df_training.keys())-1].values
-        self.y_training = self.df_training.iloc[:, len(self.df_training.keys())-1:len(self.df_training.keys())].values
-        self.x_testing = self.df_testing.iloc[:, :len(self.df_testing.keys()) - 1].values
-        self.y_testing = self.df_testing.iloc[:, len(self.df_testing.keys())-1:len(self.df_testing.keys())].values
+        self.x_training = x_training
+        self.y_training = y_training
+        self.x_testing = x_testing
+        self.y_testing = y_testing
         self.classifier = None
         self.max_depth = 50
         self.n_estimators = 100
@@ -65,6 +65,7 @@ class RandomForest(Classifier):
             precision_bad_credit = (cm[1][1] / (cm[1][0] + cm[1][1])) * 100
             tpr, fpr, threshold = roc_curve(self.y_testing, y_predicted, pos_label=1)
             precision = precision_score(self.y_testing, y_predicted)
-            return cm, f1, precision_good_credit, precision_bad_credit, fpr[1], precision, threshold, model
+            recall = recall_score(self.y_testing, y_predicted)
+            return cm, f1, precision_good_credit, precision_bad_credit, fpr[1], precision, recall, threshold, model
         except Exception as e:
             raise TrainingException(f"Error '{e}' testing RandomForest classifier produced")
