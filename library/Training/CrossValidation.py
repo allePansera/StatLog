@@ -2,10 +2,17 @@ from library.Training.Training import Training
 from library.Dataset.DatasetPartition import DatasetPartition
 from library.Dataset.Dataset import Dataset
 from library.Dataset.Normalization import Normalization
+import logging, time
 
-# Logger config
+## Logger config
+logging.basicConfig(filename="log/master.log",
+                            filemode='w',
+                            format='%(asctime)s %(levelname)-8s %(message)s',
+                            datefmt='%d-%m-%Y %H:%M:%S',
+                            level=logging.INFO)
+logger = logging.getLogger("Master-Logger")
 
-# Const definition
+## Const definition
 SUPPORTED_CLASSIFIER = ["RF", "LR"]
 SUPPORTED_SAMPLING = ["US", "OS_SVM", "OS_K", "OS_ADASYN"]
 K_TEST = 10
@@ -14,6 +21,7 @@ performances = {}
 
 
 ## Dataset division
+start = time.time()
 # Dataset download
 ds = Dataset()
 df = ds.download(save=True)
@@ -23,16 +31,64 @@ df = normalizer.execute(save=True)
 # Dataset partition
 dp = DatasetPartition(df)
 x_training, y_training, x_testing, y_testing = dp.split()
+end = time.time()
+logger.info(f"Dataset downloaded & split between training and validation... {round(end-start,2)}sec")
 
-## Model-selection
+
+## Cross-Validation performance
+start = time.time()
 for classifier in SUPPORTED_CLASSIFIER:
+    performances[classifier] = {}
     for sampler in SUPPORTED_SAMPLING:
         performances[classifier][sampler] = []
         for index in range(K_TEST):
-            t = Training(method="RF", oversample_tech="OS_SVM", logging_path='log/training.log')
-            f1, fdr, precision, recall = t.run()
+            t = Training(method=classifier, oversample_tech=sampler, logging_path=LOG_BASE_PATH.format(classifier, sampler))
+            f1, fdr, precision, recall = t.run(x_training=x_training, y_training= y_training,
+                                               x_testing=x_testing, y_testing=y_testing)
             test_result = {"F1": f1, "FDR": fdr, "PRECISION": precision, "RECALL": recall}
             performances[classifier][sampler].append(test_result)
+end = time.time()
+logger.info(f"All model have been trained in {round(end-start, 2)}sec...")
+
+## Model-selection
+logger.info("Analyze the best model due to the performances...\n")
+# creating a dict with all the performances
+result = []
+for classifier in SUPPORTED_CLASSIFIER:
+    for sampler in SUPPORTED_SAMPLING:
+        medium_f1 = round(sum([result["F1"] for result in performances[classifier][sampler]])/K_TEST, 2)
+        medium_fdr = round(sum([result["FDR"] for result in performances[classifier][sampler]])/K_TEST, 2)
+        medium_precision = round(sum([result["PRECISION"] for result in performances[classifier][sampler]])/K_TEST, 2)
+        medium_recall = round(sum([result["RECALL"] for result in performances[classifier][sampler]])/K_TEST, 2)
+        result.append({"classifier": classifier, "sampler": sampler,
+                       "F1": medium_f1,
+                       "FDR": medium_fdr,
+                       "PRECISION": medium_precision,
+                       "RECALL": medium_recall})
+
+## Logging all TOP 3 performances per each evaluation variable
+# F1-SCORE
+logger.info("F1-SCORE..")
+table = sorted(result, key=lambda d: d['F1'], reverse=True)[:3]
+for row in table:
+    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["F1"]))
+# FDR
+logger.info("FDR...")
+table = sorted(result, key=lambda d: d['FDR'])[:3]
+for row in table:
+    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["FDR"]))
+# RECALL
+logger.info("RECALL..")
+table = sorted(result, key=lambda d: d['RECALL'], reverse=True)[:3]
+for row in table:
+    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["RECALL"]))
+# PRECISION
+logger.info("PRECISION..")
+table = sorted(result, key=lambda d: d['PRECISION'], reverse=True)[:3]
+for row in table:
+    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["PRECISION"]))
+
+
 
 
 
