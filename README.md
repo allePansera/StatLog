@@ -165,6 +165,7 @@ Current Classifier: Random forrest
 Oversampling technique:: SVM SMOTE
 
 Confusion Matrix images are linked at: [graph comparison](/classifier/doc)
+Extra documentation at: [document](/FdML_Report_Template__1_.pdf)
 ## Web View
 There i a website to test out the ML model capabilities.
 Ref.: [https://apanseratesting.pythonanywhere.com/page/stat_log](http://apanseratesting.pythonanywhere.com/page/stat_log)
