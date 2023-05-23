@@ -57,11 +57,14 @@ class LogicalRegression(Classifier):
             y_predicted = self.classifier.predict(self.x_testing)
             cm = confusion_matrix(self.y_testing, y_predicted)
             f1 = f1_score(self.y_testing, y_predicted)
-            precision_good_credit = (cm[0][0] / (cm[0][0] + cm[0][1])) * 100
-            precision_bad_credit = (cm[1][1] / (cm[1][0] + cm[1][1])) * 100
+            TP = cm[0][0]
+            FP = cm[1][0]
+            TN = cm[1][1]
+            FN = cm[0][1]
+            fdr = round(FP / (TP + FP), 2)
             tpr, fpr, threshold = roc_curve(self.y_testing, y_predicted, pos_label=1)
             precision = precision_score(self.y_testing, y_predicted)
             recall = recall_score(self.y_testing, y_predicted)
-            return cm, f1, precision_good_credit, precision_bad_credit, fpr[1], precision, recall, threshold, model
+            return cm, f1, fdr, precision, recall, threshold, model
         except Exception as e:
             raise TrainingException(f"Error '{e}' testing RandomForest classifier produced")

@@ -66,7 +66,7 @@ class Training:
                             oversample_tech=self.oversample_tech)
             start = time.time()
             cl.train()
-            cm, f1, good_borrow_precision, bad_borrow_precision, fdr, precision, recall, threshold, model = cl.test()
+            cm, f1, fdr, precision, recall, threshold, model = cl.test()
             end = time.time()
             self.logger.info(f"Classifier produced in {round(end - start, 2)}sec")
 
