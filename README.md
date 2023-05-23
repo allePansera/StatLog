@@ -4,8 +4,7 @@ This ML poject estimates is a customer is a good or bad borrower. It estimates t
 The dataset was donated in 1994. It's made of 20 attributes 13 categorical and 7 numerical. There are 1000 samples.
 Ref.: https://archive-beta.ics.uci.edu/dataset/144/statlog+german+credit+data
 ## ML Model
-The ML model used is the Random Forest and it's trained using under-sample techniques due to class unbalance and different class weight.
-### Data description
+### Dataset description
 Features:
 
     - Attribute 1: Status of existing checking account (qualitative)
@@ -123,7 +122,7 @@ Features:
               
               A201 : yes
               A202 : no
-Evaluation:
+Inference evaluation:
 
     - This dataset requires use of a cost matrix:
 
@@ -147,27 +146,35 @@ Evaluation:
 
 
 ### Algorithm
-The used algorithm is Random Forest which belongs to Ensemble algorithm family. The main focus is based on the dataset.</br> 
+Support algorithms:
+* K-Neighbour
+* Logical Regression
+* Random Forest
+
+
 Data are unbalanced, 'Bad borrower' class which is strictly required to be more accurate than the first one ('Good borrower') is less represented.</br>
-In order to balance the dataset it's used the SVM SMOTE technique which oversample the less represented class.</br>
+In order to balance the dataset the following techniques are implemented:
+* Under-sampling: NearMiss
+* Over-sampling: SVM SMOTE
+* Over-sampling: K SNOTE
+* Over-sampling: ADASYN
+
 Categorical variables are actually classified with integer values under the Replacing technique. The corresponding value for a categorical attribute is described as: <br />       ```
         cat = A201 -> int(cat[-2:])
     ```
-Logical Regression model is also implemented but not suggested due to its high FDR.</br>
-Oversampling K-SMOTE, ADASYN and undersample techniques are also implemented but not suggested. K-SMOTE has higher PRECISION and lower FDR but it's not used 'cause it's to poor with TrueNegative detection (poor Recall).<br>
-ADASYN and SVM are pretty similar but SVM is slightly better for FDR and F1-Score.</br>
+Current evaluation parameter:
+* F1-SCORE
+* FDR
+* Recall/Sensitivity
+* Precision
 
-Current F1-SCORE: 84%
-Current Precision: 87%
-Current FDR: 13%
-Current Recall/Sensitivity: 82%
-Current Classifier: Random forrest
-Oversampling technique:: SVM SMOTE
 
-Confusion Matrix images are linked at: [graph comparison](/classifier/doc)
 Extra documentation at: [document](/FdML_Report_Template__1_.pdf)
-## Web View
-There i a website to test out the ML model capabilities.
-Ref.: [https://apanseratesting.pythonanywhere.com/page/stat_log](http://apanseratesting.pythonanywhere.com/page/stat_log)
 
-
+## Execution
+Install all the dependencies (Python 3.8):
+```
+    pip install -r config/requirements.txt
+```
+Script to run to measure performances: [CrossValidation](/library/Training/CrossValidation.py)<br>
+Log file to check for the results: [log](/log/master.log)<br>

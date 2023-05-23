@@ -4,7 +4,7 @@ from library.Exceptions.CustomExceptions import TrainingException
 
 
 class Classifier:
-    SUPPORTED_METHOD = {"RF": "Random Forest", "LR": "Logical Regression"}
+    SUPPORTED_METHOD = {"RF": "Random Forest", "LR": "Logical Regression", "KNN": "K-Neighbour"}
     SUPPORTED_SAMPLES = {"US": "Undersample - Near Miss",
                          "OS_K": "Oversample - K SMOTE",
                          "OS_SVM": "Oversample - SVM SMOTE",
@@ -27,11 +27,15 @@ class Classifier:
         self.oversample_tech = oversample_tech
         from library.Training.RandomForest import RandomForest
         from library.Training.LogicalRegression import LogicalRegression
+        from library.Training.KNeighbour import KNeighbour
         if self.method == "RF":
             self.cl = RandomForest(x_training, y_training, x_testing, y_testing, oversample_tech)
 
         elif self.method == "LR":
             self.cl = LogicalRegression(x_training, y_training, x_testing, y_testing, oversample_tech)
+
+        elif self.method == "KNN":
+            self.cl = KNeighbour(x_training, y_training, x_testing, y_testing, oversample_tech)
 
         else:
             raise TrainingException(f"Classifier '{self.method}' not supported")

@@ -25,7 +25,7 @@ class Training:
         # format='%(asctime)s %(levelname)-8s %(message)s',
         # datefmt='%d-%m-%Y %H:%M:%S',
         # level=logging.INFO)
-        fh = logging.FileHandler(logging_path, 'w', 'utf-8')
+        fh = logging.FileHandler(logging_path, 'a', 'utf-8')
         fh.setLevel(logging.INFO)
         formatter = logging.Formatter('%(name)s %(levelname)-8s %(message)s')
         fh.setFormatter(formatter)

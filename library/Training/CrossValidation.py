@@ -2,7 +2,19 @@ from library.Training.Training import Training
 from library.Dataset.DatasetPartition import DatasetPartition
 from library.Dataset.Dataset import Dataset
 from library.Dataset.Normalization import Normalization
-import logging, time
+import logging, time, os, shutil
+
+## Clean all-log
+folder = 'log'
+for filename in os.listdir(folder):
+    file_path = os.path.join(folder, filename)
+    try:
+        if os.path.isfile(file_path) or os.path.islink(file_path):
+            os.unlink(file_path)
+        elif os.path.isdir(file_path):
+            shutil.rmtree(file_path)
+    except Exception as e:
+        print('Failed to delete %s. Reason: %s' % (file_path, e))
 
 ## Logger config
 logging.basicConfig(filename="log/master.log",
@@ -13,11 +25,13 @@ logging.basicConfig(filename="log/master.log",
 logger = logging.getLogger("Master-Logger")
 
 ## Const definition
-SUPPORTED_CLASSIFIER = ["RF", "LR"]
+SUPPORTED_CLASSIFIER = ["RF", "LR", "KNN"]
 SUPPORTED_SAMPLING = ["US", "OS_SVM", "OS_K", "OS_ADASYN"]
 K_TEST = 10
 LOG_BASE_PATH = "log/testing{}_{}.log"
 performances = {}
+
+
 
 
 ## Dataset division
@@ -69,24 +83,24 @@ for classifier in SUPPORTED_CLASSIFIER:
 ## Logging all TOP 3 performances per each evaluation variable
 # F1-SCORE
 logger.info("F1-SCORE..")
-table = sorted(result, key=lambda d: d['F1'], reverse=True)[:3]
+table = sorted(result, key=lambda d: d['F1'], reverse=True)[:10]
 for row in table:
-    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["F1"]))
+    logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["F1"]))
 # FDR
 logger.info("FDR...")
-table = sorted(result, key=lambda d: d['FDR'])[:3]
+table = sorted(result, key=lambda d: d['FDR'])[:10]
 for row in table:
-    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["FDR"]))
+    logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["FDR"]))
 # RECALL
 logger.info("RECALL..")
-table = sorted(result, key=lambda d: d['RECALL'], reverse=True)[:3]
+table = sorted(result, key=lambda d: d['RECALL'], reverse=True)[:10]
 for row in table:
-    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["RECALL"]))
+    logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["RECALL"]))
 # PRECISION
 logger.info("PRECISION..")
-table = sorted(result, key=lambda d: d['PRECISION'], reverse=True)[:3]
+table = sorted(result, key=lambda d: d['PRECISION'], reverse=True)[:10]
 for row in table:
-    logger.info('| {:2} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["PRECISION"]))
+    logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["PRECISION"]))
 
 
 
