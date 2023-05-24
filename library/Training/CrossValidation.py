@@ -66,6 +66,11 @@ logger.info(f"All model have been trained in {round(end-start, 2)}sec...")
 
 ## Model-selection
 logger.info("Analyze the best model due to the performances...\n")
+# weighted evaluation
+W_F1 = 5
+W_PRECISION = 9
+W_RECALL = 3
+W_FDR = 7
 # creating a dict with all the performances
 result = []
 for classifier in SUPPORTED_CLASSIFIER:
@@ -78,9 +83,13 @@ for classifier in SUPPORTED_CLASSIFIER:
                        "F1": medium_f1,
                        "FDR": medium_fdr,
                        "PRECISION": medium_precision,
-                       "RECALL": medium_recall})
+                       "RECALL": medium_recall,
+                       "AVG": round(
+                            (W_F1*medium_f1 + W_FDR*(100-medium_fdr) + W_RECALL*medium_recall + W_PRECISION*
+                             medium_precision)
+                            / (W_F1 + W_FDR + W_RECALL + W_PRECISION), 2)})
 
-## Logging all TOP 3 performances per each evaluation variable
+## Logging all TOP performances / score
 # F1-SCORE
 logger.info("F1-SCORE..")
 table = sorted(result, key=lambda d: d['F1'], reverse=True)[:10]
@@ -102,6 +111,11 @@ table = sorted(result, key=lambda d: d['PRECISION'], reverse=True)[:10]
 for row in table:
     logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["PRECISION"]))
 
+# GLOBAL SCORE WEIGHTED
+logger.info("GLOBAL WEIGHTED SCORE..")
+table = sorted(result, key=lambda d: d['AVG'], reverse=True)[:5]
+for row in table:
+    logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["AVG"]))
 
 
 
