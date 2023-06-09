@@ -1,45 +1,9 @@
 TrainingLoggerRFUS INFO     Starting...
 TrainingLoggerRFUS INFO     Classifier production - RF...
-TrainingLoggerRFUS INFO     Classifier produced in 56.96sec
-TrainingLoggerRFUS INFO     F1 score: 73.77049180327869
-TrainingLoggerRFUS INFO     FDR: 13.0%
-TrainingLoggerRFUS INFO     Precision: 87.0%
-TrainingLoggerRFUS INFO     Recall: 64.0%
-TrainingLoggerRFUS INFO     H_Param: {'max_depth': 110, 'min_samples_split': 10, 'n_estimators': 200}
-TrainingLoggerRFUS INFO     Training concluded...
-TrainingLoggerRFUS INFO     Starting...
-TrainingLoggerRFUS INFO     Classifier production - RF...
-TrainingLoggerRFUS INFO     Classifier produced in 63.07sec
-TrainingLoggerRFUS INFO     F1 score: 73.77049180327869
-TrainingLoggerRFUS INFO     FDR: 13.0%
-TrainingLoggerRFUS INFO     Precision: 87.0%
-TrainingLoggerRFUS INFO     Recall: 64.0%
-TrainingLoggerRFUS INFO     H_Param: {'max_depth': 90, 'min_samples_split': 12, 'n_estimators': 100}
-TrainingLoggerRFUS INFO     Training concluded...
-TrainingLoggerRFUS INFO     Starting...
-TrainingLoggerRFUS INFO     Classifier production - RF...
-TrainingLoggerRFUS INFO     Classifier produced in 64.53sec
-TrainingLoggerRFUS INFO     F1 score: 73.77049180327869
-TrainingLoggerRFUS INFO     FDR: 13.0%
-TrainingLoggerRFUS INFO     Precision: 87.0%
-TrainingLoggerRFUS INFO     Recall: 64.0%
-TrainingLoggerRFUS INFO     H_Param: {'max_depth': 80, 'min_samples_split': 12, 'n_estimators': 200}
-TrainingLoggerRFUS INFO     Training concluded...
-TrainingLoggerRFUS INFO     Starting...
-TrainingLoggerRFUS INFO     Classifier production - RF...
-TrainingLoggerRFUS INFO     Classifier produced in 65.87sec
-TrainingLoggerRFUS INFO     F1 score: 75.40983606557377
-TrainingLoggerRFUS INFO     FDR: 12.0%
-TrainingLoggerRFUS INFO     Precision: 88.0%
-TrainingLoggerRFUS INFO     Recall: 66.0%
-TrainingLoggerRFUS INFO     H_Param: {'max_depth': 90, 'min_samples_split': 10, 'n_estimators': 300}
-TrainingLoggerRFUS INFO     Training concluded...
-TrainingLoggerRFUS INFO     Starting...
-TrainingLoggerRFUS INFO     Classifier production - RF...
-TrainingLoggerRFUS INFO     Classifier produced in 61.25sec
-TrainingLoggerRFUS INFO     F1 score: 75.40983606557377
-TrainingLoggerRFUS INFO     FDR: 12.0%
-TrainingLoggerRFUS INFO     Precision: 88.0%
-TrainingLoggerRFUS INFO     Recall: 66.0%
-TrainingLoggerRFUS INFO     H_Param: {'max_depth': 80, 'min_samples_split': 12, 'n_estimators': 100}
+TrainingLoggerRFUS INFO     Classifier produced in 0.28sec
+TrainingLoggerRFUS INFO     Accuracy: 66.0%
+TrainingLoggerRFUS INFO     F1 score: 71.66666666666669
+TrainingLoggerRFUS INFO     FDR: 14.000000000000002%
+TrainingLoggerRFUS INFO     Precision: 86.0%
+TrainingLoggerRFUS INFO     Recall: 61.0%
 TrainingLoggerRFUS INFO     Training concluded...

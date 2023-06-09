@@ -2,7 +2,7 @@ import joblib
 import pandas as pd
 import numpy as np
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score, recall_score
+from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score, recall_score, accuracy_score
 from sklearn.model_selection import GridSearchCV
 from library.Exceptions.CustomExceptions import TrainingException
 from library.Training.Sampler import Sampler
@@ -61,7 +61,7 @@ class KNeighbour(Classifier):
     def test(self):
         """
         test() check the result for the Random Forest classifier produced
-        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, fpr, precision, roc threshold, model, param scelti
+        :return: confusion matrix error, accurcay, f1 score, good borrower precision, bad borrower precision, fpr, precision, roc threshold, model, param scelti
         """
         try:
             if self.classifier is None:
@@ -70,6 +70,7 @@ class KNeighbour(Classifier):
             model = f"{self.SUPPORTED_METHOD['KNN']} - {self.SUPPORTED_SAMPLES[self.oversample_tech]}"
             y_predicted = self.classifier.predict(self.x_testing)
             cm = confusion_matrix(self.y_testing, y_predicted)
+            accuracy = accuracy_score(self.y_testing, y_predicted)
             f1 = f1_score(self.y_testing, y_predicted)
             TP = cm[0][0]
             FP = cm[1][0]
@@ -79,6 +80,6 @@ class KNeighbour(Classifier):
             tpr, fpr, threshold = roc_curve(self.y_testing, y_predicted, pos_label=1)
             precision = precision_score(self.y_testing, y_predicted)
             recall = recall_score(self.y_testing, y_predicted)
-            return cm, f1, fdr, precision, recall, threshold, model, self.classifier.best_params_ if self.mode == 'heavy' else None
+            return cm, accuracy, f1, fdr, precision, recall, threshold, model, self.classifier.best_params_ if self.mode == 'heavy' else None
         except Exception as e:
             raise TrainingException(f"Error '{e}' testing K-Neighbour classifier produced")

@@ -111,11 +111,11 @@ class CrossValidation:
                     start_inner = time.time()
                     t = Training(method=classifier, oversample_tech=sampler,
                                  logging_path=self.LOG_BASE_PATH.format(classifier, sampler))
-                    f1, fdr, precision, recall = t.run(x_training=x_training, y_training=y_training,
+                    accuracy, f1, fdr, precision, recall = t.run(x_training=x_training, y_training=y_training,
                                                        x_testing=x_testing, y_testing=y_testing,
                                                        mode=self.MODE)
                     # store model performance after internal h_param optimization
-                    test_result = {"F1": f1, "FDR": fdr, "PRECISION": precision, "RECALL": recall}
+                    test_result = {"ACC": accuracy, "F1": f1, "FDR": fdr, "PRECISION": precision, "RECALL": recall}
                     self.performances[classifier][sampler].append(test_result)
                     end_inner = time.time()
                     if self.VERBOSE: self.logger.info(f"{index+1}) Model trained in {round(end_inner - start_inner, 2)}sec...")
@@ -133,6 +133,7 @@ class CrossValidation:
         result = []
         for classifier in self.SUPPORTED_CLASSIFIER:
             for sampler in self.SUPPORTED_SAMPLING:
+                medium_accuracy = round(sum([result["ACC"] for result in self.performances[classifier][sampler]]) / self.K_TEST, 2)
                 medium_f1 = round(sum([result["F1"] for result in self.performances[classifier][sampler]]) / self.K_TEST, 2)
                 medium_fdr = round(sum([result["FDR"] for result in self.performances[classifier][sampler]]) / self.K_TEST, 2)
                 medium_precision = round(
@@ -140,6 +141,7 @@ class CrossValidation:
                 medium_recall = round(sum([result["RECALL"] for result in self.performances[classifier][sampler]]) / self.K_TEST,
                                       2)
                 result.append({"classifier": classifier, "sampler": sampler,
+                               "ACC": medium_accuracy,
                                "F1": medium_f1,
                                "FDR": medium_fdr,
                                "PRECISION": medium_precision,
@@ -153,6 +155,11 @@ class CrossValidation:
                                    2)})
 
         ## Logging all TOP performances / score
+        # accuracy
+        self.logger.info("ACCURACY..")
+        table = sorted(result, key=lambda d: d['ACC'], reverse=True)[:10]
+        for row in table:
+            self.logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["ACC"]))
         # F1-SCORE
         self.logger.info("F1-SCORE..")
         table = sorted(result, key=lambda d: d['F1'], reverse=True)[:10]

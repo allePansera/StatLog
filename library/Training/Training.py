@@ -46,7 +46,7 @@ class Training:
         :param x_testing: passed to the classifier to evaluate performance
         :param y_testing: passed to the classifier to evaluate performance
         :param mode: if 'heavy' hyper params are optimized
-        :return: F1, FDR, PRECISION, RECALL
+        :return: ACCURACY, F1, FDR, PRECISION, RECALL
         """
         try:
             self.logger.info("Starting...")
@@ -58,7 +58,7 @@ class Training:
                             mode=mode)
             start = time.time()
             cl.train()
-            cm, f1, fdr, precision, recall, threshold, model, chosen_h_param = cl.test()
+            cm, accuracy, f1, fdr, precision, recall, threshold, model, chosen_h_param = cl.test()
             end = time.time()
             self.logger.info(f"Classifier produced in {round(end - start, 2)}sec")
 
@@ -70,6 +70,7 @@ class Training:
             # USELESS: correlation_plt(df)
             cl.save_classifier(path=f'classifier/rf_{self.method}_{self.oversample_tech}.joblib')
 
+            self.logger.info(f"Accuracy: {round(accuracy, 2) * 100}%")
             self.logger.info(f"F1 score: {f1*100}")
             self.logger.info(f"FDR: {round(fdr, 2)*100}%")
             self.logger.info(f"Precision: {round(precision, 2)*100}%")
@@ -78,6 +79,6 @@ class Training:
 
             self.logger.info("Training concluded...")
             self.release_logger()
-            return f1*100, round(fdr, 2)*100, round(precision, 2)*100, round(recall, 2)*100
+            return round(accuracy, 2)*100 , f1*100, round(fdr, 2)*100, round(precision, 2)*100, round(recall, 2)*100
         except Exception as e:
             self.logger.error(f"Error '{e}' while executing training...")
