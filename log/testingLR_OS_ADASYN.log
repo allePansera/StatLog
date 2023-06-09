@@ -1,8 +1,45 @@
 TrainingLoggerLROS_ADASYN INFO     Starting...
 TrainingLoggerLROS_ADASYN INFO     Classifier production - LR...
-TrainingLoggerLROS_ADASYN INFO     Classifier produced in 0.02sec
-TrainingLoggerLROS_ADASYN INFO     F1 score: 80.59701492537314
-TrainingLoggerLROS_ADASYN INFO     FDR: 16.0%
-TrainingLoggerLROS_ADASYN INFO     Precision: 84.0%
+TrainingLoggerLROS_ADASYN INFO     Classifier produced in 0.28sec
+TrainingLoggerLROS_ADASYN INFO     F1 score: 80.0
+TrainingLoggerLROS_ADASYN INFO     FDR: 17.0%
+TrainingLoggerLROS_ADASYN INFO     Precision: 83.0%
 TrainingLoggerLROS_ADASYN INFO     Recall: 77.0%
+TrainingLoggerLROS_ADASYN INFO     H_Param: {'C': 10.0}
+TrainingLoggerLROS_ADASYN INFO     Training concluded...
+TrainingLoggerLROS_ADASYN INFO     Starting...
+TrainingLoggerLROS_ADASYN INFO     Classifier production - LR...
+TrainingLoggerLROS_ADASYN INFO     Classifier produced in 0.26sec
+TrainingLoggerLROS_ADASYN INFO     F1 score: 80.88235294117648
+TrainingLoggerLROS_ADASYN INFO     FDR: 17.0%
+TrainingLoggerLROS_ADASYN INFO     Precision: 83.0%
+TrainingLoggerLROS_ADASYN INFO     Recall: 79.0%
+TrainingLoggerLROS_ADASYN INFO     H_Param: {'C': 10.0}
+TrainingLoggerLROS_ADASYN INFO     Training concluded...
+TrainingLoggerLROS_ADASYN INFO     Starting...
+TrainingLoggerLROS_ADASYN INFO     Classifier production - LR...
+TrainingLoggerLROS_ADASYN INFO     Classifier produced in 0.28sec
+TrainingLoggerLROS_ADASYN INFO     F1 score: 81.81818181818183
+TrainingLoggerLROS_ADASYN INFO     FDR: 13.0%
+TrainingLoggerLROS_ADASYN INFO     Precision: 87.0%
+TrainingLoggerLROS_ADASYN INFO     Recall: 77.0%
+TrainingLoggerLROS_ADASYN INFO     H_Param: {'C': 10.0}
+TrainingLoggerLROS_ADASYN INFO     Training concluded...
+TrainingLoggerLROS_ADASYN INFO     Starting...
+TrainingLoggerLROS_ADASYN INFO     Classifier production - LR...
+TrainingLoggerLROS_ADASYN INFO     Classifier produced in 0.25sec
+TrainingLoggerLROS_ADASYN INFO     F1 score: 82.70676691729324
+TrainingLoggerLROS_ADASYN INFO     FDR: 13.0%
+TrainingLoggerLROS_ADASYN INFO     Precision: 87.0%
+TrainingLoggerLROS_ADASYN INFO     Recall: 79.0%
+TrainingLoggerLROS_ADASYN INFO     H_Param: {'C': 1.0}
+TrainingLoggerLROS_ADASYN INFO     Training concluded...
+TrainingLoggerLROS_ADASYN INFO     Starting...
+TrainingLoggerLROS_ADASYN INFO     Classifier production - LR...
+TrainingLoggerLROS_ADASYN INFO     Classifier produced in 0.26sec
+TrainingLoggerLROS_ADASYN INFO     F1 score: 82.08955223880598
+TrainingLoggerLROS_ADASYN INFO     FDR: 14.000000000000002%
+TrainingLoggerLROS_ADASYN INFO     Precision: 86.0%
+TrainingLoggerLROS_ADASYN INFO     Recall: 79.0%
+TrainingLoggerLROS_ADASYN INFO     H_Param: {'C': 100.0}
 TrainingLoggerLROS_ADASYN INFO     Training concluded...

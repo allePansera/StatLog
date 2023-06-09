@@ -1,8 +1,45 @@
 TrainingLoggerKNNOS_SVM INFO     Starting...
 TrainingLoggerKNNOS_SVM INFO     Classifier production - KNN...
-TrainingLoggerKNNOS_SVM INFO     Classifier produced in 0.0sec
-TrainingLoggerKNNOS_SVM INFO     F1 score: 67.15328467153284
-TrainingLoggerKNNOS_SVM INFO     FDR: 31.0%
-TrainingLoggerKNNOS_SVM INFO     Precision: 69.0%
-TrainingLoggerKNNOS_SVM INFO     Recall: 66.0%
+TrainingLoggerKNNOS_SVM INFO     Classifier produced in 0.45sec
+TrainingLoggerKNNOS_SVM INFO     F1 score: 74.12587412587412
+TrainingLoggerKNNOS_SVM INFO     FDR: 27.0%
+TrainingLoggerKNNOS_SVM INFO     Precision: 73.0%
+TrainingLoggerKNNOS_SVM INFO     Recall: 76.0%
+TrainingLoggerKNNOS_SVM INFO     H_Param: {'n_neighbors': 1}
+TrainingLoggerKNNOS_SVM INFO     Training concluded...
+TrainingLoggerKNNOS_SVM INFO     Starting...
+TrainingLoggerKNNOS_SVM INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_SVM INFO     Classifier produced in 0.45sec
+TrainingLoggerKNNOS_SVM INFO     F1 score: 73.75886524822695
+TrainingLoggerKNNOS_SVM INFO     FDR: 27.0%
+TrainingLoggerKNNOS_SVM INFO     Precision: 73.0%
+TrainingLoggerKNNOS_SVM INFO     Recall: 74.0%
+TrainingLoggerKNNOS_SVM INFO     H_Param: {'n_neighbors': 1}
+TrainingLoggerKNNOS_SVM INFO     Training concluded...
+TrainingLoggerKNNOS_SVM INFO     Starting...
+TrainingLoggerKNNOS_SVM INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_SVM INFO     Classifier produced in 0.45sec
+TrainingLoggerKNNOS_SVM INFO     F1 score: 73.2394366197183
+TrainingLoggerKNNOS_SVM INFO     FDR: 28.000000000000004%
+TrainingLoggerKNNOS_SVM INFO     Precision: 72.0%
+TrainingLoggerKNNOS_SVM INFO     Recall: 74.0%
+TrainingLoggerKNNOS_SVM INFO     H_Param: {'n_neighbors': 1}
+TrainingLoggerKNNOS_SVM INFO     Training concluded...
+TrainingLoggerKNNOS_SVM INFO     Starting...
+TrainingLoggerKNNOS_SVM INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_SVM INFO     Classifier produced in 0.46sec
+TrainingLoggerKNNOS_SVM INFO     F1 score: 71.42857142857143
+TrainingLoggerKNNOS_SVM INFO     FDR: 28.999999999999996%
+TrainingLoggerKNNOS_SVM INFO     Precision: 71.0%
+TrainingLoggerKNNOS_SVM INFO     Recall: 71.0%
+TrainingLoggerKNNOS_SVM INFO     H_Param: {'n_neighbors': 1}
+TrainingLoggerKNNOS_SVM INFO     Training concluded...
+TrainingLoggerKNNOS_SVM INFO     Starting...
+TrainingLoggerKNNOS_SVM INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_SVM INFO     Classifier produced in 0.45sec
+TrainingLoggerKNNOS_SVM INFO     F1 score: 72.34042553191489
+TrainingLoggerKNNOS_SVM INFO     FDR: 28.000000000000004%
+TrainingLoggerKNNOS_SVM INFO     Precision: 72.0%
+TrainingLoggerKNNOS_SVM INFO     Recall: 73.0%
+TrainingLoggerKNNOS_SVM INFO     H_Param: {'n_neighbors': 1}
 TrainingLoggerKNNOS_SVM INFO     Training concluded...

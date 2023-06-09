@@ -5,6 +5,7 @@ from library.Dataset.DatasetPartition import DatasetPartition
 from library.Dataset.Dataset import Dataset
 from library.Dataset.EDA import EDA
 from library.Plot.Histogram import plot
+from library.Plot.EDA_Analysis import plot as EDA_plot
 
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -79,7 +80,8 @@ class CrossValidation:
         ds = Dataset()
         # OLD -> df = ds.download(save=True)
         df = ds.read_from_file(path=self.SOURCE)
-        cols = list(df.keys())
+        EDA_plot(df)
+        # USED WITH SCALING -> cols = list(df.keys())
         # Dataset normalization & scaling
         eda = EDA(df, verbose=self.VERBOSE)
         eda.replacing(save=self.STORE_NORMALIZED)

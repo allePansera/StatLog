@@ -1,8 +1,45 @@
 TrainingLoggerRFOS_K INFO     Starting...
 TrainingLoggerRFOS_K INFO     Classifier production - RF...
-TrainingLoggerRFOS_K INFO     Classifier produced in 0.35sec
-TrainingLoggerRFOS_K INFO     F1 score: 84.35374149659864
-TrainingLoggerRFOS_K INFO     FDR: 19.0%
-TrainingLoggerRFOS_K INFO     Precision: 81.0%
-TrainingLoggerRFOS_K INFO     Recall: 89.0%
+TrainingLoggerRFOS_K INFO     Classifier produced in 68.4sec
+TrainingLoggerRFOS_K INFO     F1 score: 84.76821192052981
+TrainingLoggerRFOS_K INFO     FDR: 21.0%
+TrainingLoggerRFOS_K INFO     Precision: 79.0%
+TrainingLoggerRFOS_K INFO     Recall: 91.0%
+TrainingLoggerRFOS_K INFO     H_Param: {'max_depth': 100, 'min_samples_split': 8, 'n_estimators': 200}
+TrainingLoggerRFOS_K INFO     Training concluded...
+TrainingLoggerRFOS_K INFO     Starting...
+TrainingLoggerRFOS_K INFO     Classifier production - RF...
+TrainingLoggerRFOS_K INFO     Classifier produced in 68.03sec
+TrainingLoggerRFOS_K INFO     F1 score: 83.66013071895425
+TrainingLoggerRFOS_K INFO     FDR: 23.0%
+TrainingLoggerRFOS_K INFO     Precision: 77.0%
+TrainingLoggerRFOS_K INFO     Recall: 91.0%
+TrainingLoggerRFOS_K INFO     H_Param: {'max_depth': 100, 'min_samples_split': 8, 'n_estimators': 100}
+TrainingLoggerRFOS_K INFO     Training concluded...
+TrainingLoggerRFOS_K INFO     Starting...
+TrainingLoggerRFOS_K INFO     Classifier production - RF...
+TrainingLoggerRFOS_K INFO     Classifier produced in 67.66sec
+TrainingLoggerRFOS_K INFO     F1 score: 84.76821192052981
+TrainingLoggerRFOS_K INFO     FDR: 21.0%
+TrainingLoggerRFOS_K INFO     Precision: 79.0%
+TrainingLoggerRFOS_K INFO     Recall: 91.0%
+TrainingLoggerRFOS_K INFO     H_Param: {'max_depth': 80, 'min_samples_split': 8, 'n_estimators': 200}
+TrainingLoggerRFOS_K INFO     Training concluded...
+TrainingLoggerRFOS_K INFO     Starting...
+TrainingLoggerRFOS_K INFO     Classifier production - RF...
+TrainingLoggerRFOS_K INFO     Classifier produced in 70.36sec
+TrainingLoggerRFOS_K INFO     F1 score: 85.33333333333333
+TrainingLoggerRFOS_K INFO     FDR: 20.0%
+TrainingLoggerRFOS_K INFO     Precision: 80.0%
+TrainingLoggerRFOS_K INFO     Recall: 91.0%
+TrainingLoggerRFOS_K INFO     H_Param: {'max_depth': 80, 'min_samples_split': 8, 'n_estimators': 1000}
+TrainingLoggerRFOS_K INFO     Training concluded...
+TrainingLoggerRFOS_K INFO     Starting...
+TrainingLoggerRFOS_K INFO     Classifier production - RF...
+TrainingLoggerRFOS_K INFO     Classifier produced in 68.97sec
+TrainingLoggerRFOS_K INFO     F1 score: 85.33333333333333
+TrainingLoggerRFOS_K INFO     FDR: 20.0%
+TrainingLoggerRFOS_K INFO     Precision: 80.0%
+TrainingLoggerRFOS_K INFO     Recall: 91.0%
+TrainingLoggerRFOS_K INFO     H_Param: {'max_depth': 80, 'min_samples_split': 8, 'n_estimators': 100}
 TrainingLoggerRFOS_K INFO     Training concluded...

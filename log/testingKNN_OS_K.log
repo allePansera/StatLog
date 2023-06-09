@@ -1,8 +1,45 @@
 TrainingLoggerKNNOS_K INFO     Starting...
 TrainingLoggerKNNOS_K INFO     Classifier production - KNN...
-TrainingLoggerKNNOS_K INFO     Classifier produced in 0.02sec
-TrainingLoggerKNNOS_K INFO     F1 score: 73.6842105263158
-TrainingLoggerKNNOS_K INFO     FDR: 32.0%
-TrainingLoggerKNNOS_K INFO     Precision: 68.0%
-TrainingLoggerKNNOS_K INFO     Recall: 80.0%
+TrainingLoggerKNNOS_K INFO     Classifier produced in 0.47sec
+TrainingLoggerKNNOS_K INFO     F1 score: 79.50310559006212
+TrainingLoggerKNNOS_K INFO     FDR: 30.0%
+TrainingLoggerKNNOS_K INFO     Precision: 70.0%
+TrainingLoggerKNNOS_K INFO     Recall: 91.0%
+TrainingLoggerKNNOS_K INFO     H_Param: {'n_neighbors': 9}
+TrainingLoggerKNNOS_K INFO     Training concluded...
+TrainingLoggerKNNOS_K INFO     Starting...
+TrainingLoggerKNNOS_K INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_K INFO     Classifier produced in 0.49sec
+TrainingLoggerKNNOS_K INFO     F1 score: 78.75
+TrainingLoggerKNNOS_K INFO     FDR: 30.0%
+TrainingLoggerKNNOS_K INFO     Precision: 70.0%
+TrainingLoggerKNNOS_K INFO     Recall: 90.0%
+TrainingLoggerKNNOS_K INFO     H_Param: {'n_neighbors': 9}
+TrainingLoggerKNNOS_K INFO     Training concluded...
+TrainingLoggerKNNOS_K INFO     Starting...
+TrainingLoggerKNNOS_K INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_K INFO     Classifier produced in 0.47sec
+TrainingLoggerKNNOS_K INFO     F1 score: 78.75
+TrainingLoggerKNNOS_K INFO     FDR: 30.0%
+TrainingLoggerKNNOS_K INFO     Precision: 70.0%
+TrainingLoggerKNNOS_K INFO     Recall: 90.0%
+TrainingLoggerKNNOS_K INFO     H_Param: {'n_neighbors': 9}
+TrainingLoggerKNNOS_K INFO     Training concluded...
+TrainingLoggerKNNOS_K INFO     Starting...
+TrainingLoggerKNNOS_K INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_K INFO     Classifier produced in 0.47sec
+TrainingLoggerKNNOS_K INFO     F1 score: 78.48101265822784
+TrainingLoggerKNNOS_K INFO     FDR: 30.0%
+TrainingLoggerKNNOS_K INFO     Precision: 70.0%
+TrainingLoggerKNNOS_K INFO     Recall: 89.0%
+TrainingLoggerKNNOS_K INFO     H_Param: {'n_neighbors': 9}
+TrainingLoggerKNNOS_K INFO     Training concluded...
+TrainingLoggerKNNOS_K INFO     Starting...
+TrainingLoggerKNNOS_K INFO     Classifier production - KNN...
+TrainingLoggerKNNOS_K INFO     Classifier produced in 0.47sec
+TrainingLoggerKNNOS_K INFO     F1 score: 78.48101265822784
+TrainingLoggerKNNOS_K INFO     FDR: 30.0%
+TrainingLoggerKNNOS_K INFO     Precision: 70.0%
+TrainingLoggerKNNOS_K INFO     Recall: 89.0%
+TrainingLoggerKNNOS_K INFO     H_Param: {'n_neighbors': 9}
 TrainingLoggerKNNOS_K INFO     Training concluded...

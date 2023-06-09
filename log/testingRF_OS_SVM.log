@@ -1,8 +1,45 @@
 TrainingLoggerRFOS_SVM INFO     Starting...
 TrainingLoggerRFOS_SVM INFO     Classifier production - RF...
-TrainingLoggerRFOS_SVM INFO     Classifier produced in 0.33sec
-TrainingLoggerRFOS_SVM INFO     F1 score: 85.91549295774648
-TrainingLoggerRFOS_SVM INFO     FDR: 15.0%
-TrainingLoggerRFOS_SVM INFO     Precision: 85.0%
-TrainingLoggerRFOS_SVM INFO     Recall: 87.0%
+TrainingLoggerRFOS_SVM INFO     Classifier produced in 72.85sec
+TrainingLoggerRFOS_SVM INFO     F1 score: 84.28571428571429
+TrainingLoggerRFOS_SVM INFO     FDR: 16.0%
+TrainingLoggerRFOS_SVM INFO     Precision: 84.0%
+TrainingLoggerRFOS_SVM INFO     Recall: 84.0%
+TrainingLoggerRFOS_SVM INFO     H_Param: {'max_depth': 110, 'min_samples_split': 10, 'n_estimators': 100}
+TrainingLoggerRFOS_SVM INFO     Training concluded...
+TrainingLoggerRFOS_SVM INFO     Starting...
+TrainingLoggerRFOS_SVM INFO     Classifier production - RF...
+TrainingLoggerRFOS_SVM INFO     Classifier produced in 70.39sec
+TrainingLoggerRFOS_SVM INFO     F1 score: 83.45323741007195
+TrainingLoggerRFOS_SVM INFO     FDR: 16.0%
+TrainingLoggerRFOS_SVM INFO     Precision: 84.0%
+TrainingLoggerRFOS_SVM INFO     Recall: 83.0%
+TrainingLoggerRFOS_SVM INFO     H_Param: {'max_depth': 100, 'min_samples_split': 10, 'n_estimators': 100}
+TrainingLoggerRFOS_SVM INFO     Training concluded...
+TrainingLoggerRFOS_SVM INFO     Starting...
+TrainingLoggerRFOS_SVM INFO     Classifier production - RF...
+TrainingLoggerRFOS_SVM INFO     Classifier produced in 71.7sec
+TrainingLoggerRFOS_SVM INFO     F1 score: 82.60869565217392
+TrainingLoggerRFOS_SVM INFO     FDR: 16.0%
+TrainingLoggerRFOS_SVM INFO     Precision: 84.0%
+TrainingLoggerRFOS_SVM INFO     Recall: 81.0%
+TrainingLoggerRFOS_SVM INFO     H_Param: {'max_depth': 100, 'min_samples_split': 8, 'n_estimators': 300}
+TrainingLoggerRFOS_SVM INFO     Training concluded...
+TrainingLoggerRFOS_SVM INFO     Starting...
+TrainingLoggerRFOS_SVM INFO     Classifier production - RF...
+TrainingLoggerRFOS_SVM INFO     Classifier produced in 70.5sec
+TrainingLoggerRFOS_SVM INFO     F1 score: 82.01438848920863
+TrainingLoggerRFOS_SVM INFO     FDR: 17.0%
+TrainingLoggerRFOS_SVM INFO     Precision: 83.0%
+TrainingLoggerRFOS_SVM INFO     Recall: 81.0%
+TrainingLoggerRFOS_SVM INFO     H_Param: {'max_depth': 80, 'min_samples_split': 8, 'n_estimators': 100}
+TrainingLoggerRFOS_SVM INFO     Training concluded...
+TrainingLoggerRFOS_SVM INFO     Starting...
+TrainingLoggerRFOS_SVM INFO     Classifier production - RF...
+TrainingLoggerRFOS_SVM INFO     Classifier produced in 72.48sec
+TrainingLoggerRFOS_SVM INFO     F1 score: 83.68794326241135
+TrainingLoggerRFOS_SVM INFO     FDR: 17.0%
+TrainingLoggerRFOS_SVM INFO     Precision: 83.0%
+TrainingLoggerRFOS_SVM INFO     Recall: 84.0%
+TrainingLoggerRFOS_SVM INFO     H_Param: {'max_depth': 80, 'min_samples_split': 8, 'n_estimators': 300}
 TrainingLoggerRFOS_SVM INFO     Training concluded...
