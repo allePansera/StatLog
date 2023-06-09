@@ -9,3 +9,4 @@ flask
 flask_classful
 imbalanced-learn
 GitPython
+matplotlib==3.7.1

@@ -125,7 +125,7 @@ import pandas as pd
 import numpy as np
 import json, joblib
 from datetime import datetime
-from library.Dataset.Normalization import Normalization
+from library.Dataset.EDA import Normalization
 
 
 class TestCustomer:

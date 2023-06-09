@@ -1,16 +1,6 @@
-import time, logging, os
-import traceback
-
-import pandas as pd
-
-from library.Dataset.Dataset import Dataset
-from library.Dataset.Normalization import Normalization
+import time, logging
 from library.Training.Classifier import Classifier
-from library.Plot.Correlation import plot as correlation_plt
 from library.Plot.ConfusionMatrix import plot as conf_matrix_plot
-from library.Plot.FeatureImportance import plot as feature_importance
-from library.Plot.RocCurve import plot as roc_curve
-from library.Exceptions.CustomExceptions import TrainingException
 
 
 class Training:
@@ -48,13 +38,14 @@ class Training:
                 self.logger.removeHandler(handler)
                 handler.close()
 
-    def run(self, x_training, y_training, x_testing, y_testing):
+    def run(self, x_training, y_training, x_testing, y_testing, mode):
         """
         run() method start training writing output to log file defined as a library attribute
         :param x_training: passed to the classifier
         :param y_training: passed to the classifier
         :param x_testing: passed to the classifier to evaluate performance
         :param y_testing: passed to the classifier to evaluate performance
+        :param mode: if 'heavy' hyper params are optimized
         :return: F1, FDR, PRECISION, RECALL
         """
         try:
@@ -63,14 +54,15 @@ class Training:
             cl = Classifier(x_training=x_training, y_training=y_training,
                             x_testing=x_testing, y_testing=y_testing,
                             method=self.method,
-                            oversample_tech=self.oversample_tech)
+                            oversample_tech=self.oversample_tech,
+                            mode=mode)
             start = time.time()
             cl.train()
-            cm, f1, fdr, precision, recall, threshold, model = cl.test()
+            cm, f1, fdr, precision, recall, threshold, model, chosen_h_param = cl.test()
             end = time.time()
             self.logger.info(f"Classifier produced in {round(end - start, 2)}sec")
 
-            conf_matrix_plot(cm, f'Model: {self.method} - {self.oversample_tech}')
+            # conf_matrix_plot(cm, f'Model: {self.method} - {self.oversample_tech}')
             # roc_curve(threshold, model)
             # if hasattr(cl.get_classifier(), "feature_importances_"):
             #    feature_importance(cl.get_classifier().feature_importances_)
@@ -82,6 +74,7 @@ class Training:
             self.logger.info(f"FDR: {round(fdr, 2)*100}%")
             self.logger.info(f"Precision: {round(precision, 2)*100}%")
             self.logger.info(f"Recall: {round(recall, 2) * 100}%")
+            if mode == 'heavy': self.logger.info(f"H_Param: {chosen_h_param}")
 
             self.logger.info("Training concluded...")
             self.release_logger()

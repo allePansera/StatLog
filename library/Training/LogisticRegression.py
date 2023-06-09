@@ -1,7 +1,7 @@
 import joblib
 import pandas as pd
 import numpy as np
-from sklearn.neighbors import KNeighborsClassifier
+from sklearn.linear_model import LogisticRegression as LogisticRegressionSk
 from sklearn.metrics import confusion_matrix, f1_score, roc_curve, precision_score, recall_score
 from sklearn.model_selection import GridSearchCV
 from library.Exceptions.CustomExceptions import TrainingException
@@ -9,7 +9,7 @@ from library.Training.Sampler import Sampler
 from library.Training.Classifier import Classifier
 
 
-class KNeighbour(Classifier):
+class LogisticRegression(Classifier):
     def __init__(self, x_training, y_training, x_testing, y_testing, oversample_tech, mode):
         """
         Constructor split DataSet into training and testing samples
@@ -25,13 +25,18 @@ class KNeighbour(Classifier):
         self.x_testing = x_testing
         self.y_testing = y_testing
         self.classifier = None
+        self.max_depth = 50
+        self.n_estimators = 100
         # UNDERSAMPLE or OVERSAMPLE:
         self.oversample_tech = oversample_tech
         self.mode = mode
         smp = Sampler(oversample_tech=oversample_tech)
         self.x_training, self.y_training = smp.execute(self.x_training, self.y_training)
         # H_PARAM
-        self.h_param = {'n_neighbors': list(range(1, 10, 2))}
+        self.h_param = {
+                        "C": np.logspace(-3, 3, 7)
+                    }
+
 
     def save_classifier(self, path='classifier/rf.{}'):
         joblib.dump(self.classifier, path.format("joblib"))
@@ -52,22 +57,22 @@ class KNeighbour(Classifier):
         :return:
         """
         try:
-            self.classifier = KNeighborsClassifier()
+            self.classifier = LogisticRegressionSk(solver="newton-cholesky", max_iter=1000)
             if self.mode == 'heavy': self.optimize_hparam()
             self.classifier.fit(self.x_training, self.y_training.ravel())
         except Exception as e:
-            raise TrainingException(f"Error '{e}' training dataset with RandomForest classifier")
+            raise TrainingException(f"Error '{e}' training dataset with LogisticRegression classifier")
 
     def test(self):
         """
         test() check the result for the Random Forest classifier produced
-        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, fpr, precision, roc threshold, model, param scelti
+        :return: confusion matrix error, f1 score, good borrower precision, bad borrower precision, fpr, precision, threshold, model, param. scelti
         """
         try:
             if self.classifier is None:
                 raise Exception('classifier still not produced')
 
-            model = f"{self.SUPPORTED_METHOD['KNN']} - {self.SUPPORTED_SAMPLES[self.oversample_tech]}"
+            model = f"{self.SUPPORTED_METHOD['LR']} - {self.SUPPORTED_SAMPLES[self.oversample_tech]}"
             y_predicted = self.classifier.predict(self.x_testing)
             cm = confusion_matrix(self.y_testing, y_predicted)
             f1 = f1_score(self.y_testing, y_predicted)
@@ -81,4 +86,4 @@ class KNeighbour(Classifier):
             recall = recall_score(self.y_testing, y_predicted)
             return cm, f1, fdr, precision, recall, threshold, model, self.classifier.best_params_ if self.mode == 'heavy' else None
         except Exception as e:
-            raise TrainingException(f"Error '{e}' testing K-Neighbour classifier produced")
+            raise TrainingException(f"Error '{e}' testing LogisticRegression classifier produced")

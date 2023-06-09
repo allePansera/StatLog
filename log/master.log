@@ -1,0 +1,77 @@
+09-06-2023 17:26:50 INFO     Dataset loaded & analyzed... 1.07sec
+09-06-2023 17:26:50 INFO     Model LR - Sampler US
+09-06-2023 17:26:50 INFO     1) Model trained in 0.3sec...
+09-06-2023 17:26:50 INFO     Model LR - Sampler OS_SVM
+09-06-2023 17:26:50 INFO     1) Model trained in 0.1sec...
+09-06-2023 17:26:50 INFO     Model LR - Sampler OS_K
+09-06-2023 17:26:51 INFO     1) Model trained in 0.23sec...
+09-06-2023 17:26:51 INFO     Model LR - Sampler OS_ADASYN
+09-06-2023 17:26:51 INFO     1) Model trained in 0.03sec...
+09-06-2023 17:26:51 INFO     Model RF - Sampler US
+09-06-2023 17:26:51 INFO     1) Model trained in 0.3sec...
+09-06-2023 17:26:51 INFO     Model RF - Sampler OS_SVM
+09-06-2023 17:26:51 INFO     1) Model trained in 0.45sec...
+09-06-2023 17:26:51 INFO     Model RF - Sampler OS_K
+09-06-2023 17:26:52 INFO     1) Model trained in 0.51sec...
+09-06-2023 17:26:52 INFO     Model RF - Sampler OS_ADASYN
+09-06-2023 17:26:52 INFO     1) Model trained in 0.4sec...
+09-06-2023 17:26:52 INFO     Model KNN - Sampler US
+09-06-2023 17:26:52 INFO     1) Model trained in 0.03sec...
+09-06-2023 17:26:52 INFO     Model KNN - Sampler OS_SVM
+09-06-2023 17:26:52 INFO     1) Model trained in 0.07sec...
+09-06-2023 17:26:52 INFO     Model KNN - Sampler OS_K
+09-06-2023 17:26:53 INFO     1) Model trained in 0.12sec...
+09-06-2023 17:26:53 INFO     Model KNN - Sampler OS_ADASYN
+09-06-2023 17:26:53 INFO     1) Model trained in 0.03sec...
+09-06-2023 17:26:53 INFO     All model have been trained in 2.57sec...
+09-06-2023 17:26:53 INFO     Analyze the best model due to the performances...
+09-06-2023 17:26:53 INFO     F1-SCORE..
+09-06-2023 17:26:53 INFO     | RF   | OS_SVM     | 85.92 |
+09-06-2023 17:26:53 INFO     | RF   | OS_K       | 84.35 |
+09-06-2023 17:26:53 INFO     | LR   | OS_SVM     | 84.21 |
+09-06-2023 17:26:53 INFO     | RF   | OS_ADASYN  | 82.27 |
+09-06-2023 17:26:53 INFO     | LR   | OS_K       | 81.48 |
+09-06-2023 17:26:53 INFO     | LR   | OS_ADASYN  | 80.6 |
+09-06-2023 17:26:53 INFO     | RF   | US         | 74.38 |
+09-06-2023 17:26:53 INFO     | KNN  | OS_K       | 73.68 |
+09-06-2023 17:26:53 INFO     | LR   | US         | 70.59 |
+09-06-2023 17:26:53 INFO     | KNN  | OS_SVM     | 67.15 |
+09-06-2023 17:26:53 INFO     FDR...
+09-06-2023 17:26:54 INFO     | LR   | OS_SVM     | 11.0 |
+09-06-2023 17:26:54 INFO     | RF   | US         | 12.0 |
+09-06-2023 17:26:54 INFO     | LR   | US         | 14.0 |
+09-06-2023 17:26:54 INFO     | LR   | OS_K       | 15.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_SVM     | 15.0 |
+09-06-2023 17:26:54 INFO     | LR   | OS_ADASYN  | 16.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_ADASYN  | 18.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_K       | 19.0 |
+09-06-2023 17:26:54 INFO     | KNN  | US         | 26.0 |
+09-06-2023 17:26:54 INFO     | KNN  | OS_ADASYN  | 28.0 |
+09-06-2023 17:26:54 INFO     RECALL..
+09-06-2023 17:26:54 INFO     | RF   | OS_K       | 89.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_SVM     | 87.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_ADASYN  | 83.0 |
+09-06-2023 17:26:54 INFO     | LR   | OS_SVM     | 80.0 |
+09-06-2023 17:26:54 INFO     | KNN  | OS_K       | 80.0 |
+09-06-2023 17:26:54 INFO     | LR   | OS_K       | 79.0 |
+09-06-2023 17:26:54 INFO     | LR   | OS_ADASYN  | 77.0 |
+09-06-2023 17:26:54 INFO     | KNN  | OS_SVM     | 66.0 |
+09-06-2023 17:26:54 INFO     | RF   | US         | 64.0 |
+09-06-2023 17:26:54 INFO     | KNN  | OS_ADASYN  | 61.0 |
+09-06-2023 17:26:54 INFO     PRECISION..
+09-06-2023 17:26:54 INFO     | LR   | OS_SVM     | 89.0 |
+09-06-2023 17:26:54 INFO     | RF   | US         | 88.0 |
+09-06-2023 17:26:54 INFO     | LR   | US         | 86.0 |
+09-06-2023 17:26:54 INFO     | LR   | OS_K       | 85.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_SVM     | 85.0 |
+09-06-2023 17:26:54 INFO     | LR   | OS_ADASYN  | 84.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_ADASYN  | 82.0 |
+09-06-2023 17:26:54 INFO     | RF   | OS_K       | 81.0 |
+09-06-2023 17:26:54 INFO     | KNN  | US         | 74.0 |
+09-06-2023 17:26:54 INFO     | KNN  | OS_ADASYN  | 72.0 |
+09-06-2023 17:26:54 INFO     GLOBAL WEIGHTED SCORE..
+09-06-2023 17:26:55 INFO     | LR   | OS_SVM     | 86.88 |
+09-06-2023 17:26:55 INFO     | RF   | OS_SVM     | 85.44 |
+09-06-2023 17:26:55 INFO     | LR   | OS_K       | 83.52 |
+09-06-2023 17:26:55 INFO     | RF   | OS_K       | 82.7 |
+09-06-2023 17:26:55 INFO     | LR   | OS_ADASYN  | 82.42 |

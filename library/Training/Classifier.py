@@ -13,7 +13,7 @@ class Classifier:
     Factory method implementation in order to change from code the TRAINING CLASSIFIER
     """
 
-    def __init__(self, x_training, y_training, x_testing, y_testing, method, oversample_tech):
+    def __init__(self, x_training, y_training, x_testing, y_testing, method, oversample_tech, mode):
         """
         Constructor split DataSet into training and testing samples
         :param x_training: feature values used for training
@@ -22,20 +22,22 @@ class Classifier:
         :param y_testing: label values used for evaluation
         :param method: it's used to decide which classifier train
         :param oversample_tech: Over-sampling or under-sample technique to use
+        :param mode: used to decide where hyper param optimization is required or not
         """
         self.method = method
         self.oversample_tech = oversample_tech
+
         from library.Training.RandomForest import RandomForest
-        from library.Training.LogicalRegression import LogicalRegression
+        from library.Training.LogisticRegression import LogisticRegression
         from library.Training.KNeighbour import KNeighbour
         if self.method == "RF":
-            self.cl = RandomForest(x_training, y_training, x_testing, y_testing, oversample_tech)
+            self.cl = RandomForest(x_training, y_training, x_testing, y_testing, oversample_tech, mode)
 
         elif self.method == "LR":
-            self.cl = LogicalRegression(x_training, y_training, x_testing, y_testing, oversample_tech)
+            self.cl = LogisticRegression(x_training, y_training, x_testing, y_testing, oversample_tech, mode)
 
         elif self.method == "KNN":
-            self.cl = KNeighbour(x_training, y_training, x_testing, y_testing, oversample_tech)
+            self.cl = KNeighbour(x_training, y_training, x_testing, y_testing, oversample_tech, mode)
 
         else:
             raise TrainingException(f"Classifier '{self.method}' not supported")
@@ -56,3 +58,4 @@ class Classifier:
 
     def get_classifier(self):
         return self.cl.classifier
+

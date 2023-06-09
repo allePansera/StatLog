@@ -64,4 +64,16 @@ class Dataset:
         df.to_csv(path.format('csv'), index=True)
         df.to_excel(path.format('xlsx'), merge_cells=False, index=True)
 
+    def read_from_file(self, path='./dataset/data.csv'):
+        """
+        Read dataset from csv file
+        :return: df
+        """
+        try:
+            return pd.read_csv(path, usecols=[i for i in range(1,22)])
+        except FileNotFoundError:
+            raise Exception(f'File {path} does not exist')
+        except Exception as e:
+            raise Exception(f"Dataset '{path}' not available")
+
 
