@@ -1,9 +1,0 @@
-TrainingLoggerKNNOS_ADASYN INFO     Starting...
-TrainingLoggerKNNOS_ADASYN INFO     Classifier production - KNN...
-TrainingLoggerKNNOS_ADASYN INFO     Classifier produced in 0.02sec
-TrainingLoggerKNNOS_ADASYN INFO     Accuracy: 52.0%
-TrainingLoggerKNNOS_ADASYN INFO     F1 score: 61.904761904761905
-TrainingLoggerKNNOS_ADASYN INFO     FDR: 30.0%
-TrainingLoggerKNNOS_ADASYN INFO     Precision: 70.0%
-TrainingLoggerKNNOS_ADASYN INFO     Recall: 56.00000000000001%
-TrainingLoggerKNNOS_ADASYN INFO     Training concluded...

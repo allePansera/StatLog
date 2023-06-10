@@ -176,5 +176,9 @@ Install all the dependencies (Python 3.8):
 ```
     pip install -r config/requirements.txt
 ```
-Script to run to measure performances: [CrossValidation](/library/Training/CrossValidation.py)<br>
+Script to run [main](main.py):
+```
+    python main.py --mode light --source dataset/data.csv --verbose 1
+```
+If a better result is appreciated then replace 'light' with 'heavy'.<br>
 Log file to check for the results: [log](/log/master.log)<br>

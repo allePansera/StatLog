@@ -90,6 +90,7 @@ Attribute 20: foreign worker
 
 """
 import pandas as pd, json
+from sklearn.preprocessing import StandardScaler
 from library.Exceptions.CustomExceptions import NormalizationException
 from library.Dataset.Dataset import Dataset
 
@@ -136,19 +137,16 @@ class EDA:
         except Exception as e:
             raise Exception(f'Error while replacing null values: {e}')
 
-    def scaling(self, save=False):
+    @staticmethod
+    def scaling(x_training):
         """
-        Training set is scaled using Standardization.
-        :param save: var. used to save or not new normalized DataFrame
-        :return: nothing
+        Training set is scaled using StandardScaler.
+        :param x_training: matrix to be normalized
+        :return: x_training normalized
         """
-        for key in self.df.keys():
-            if key != "Target":
-                self.df[key] = (self.df[key] - self.df[key].mean()) / self.df[key].std()
-
-        ds = Dataset()
-        if save:
-            ds.store_dataframe(self.df, path=self.path_to_save)
+        scaler = StandardScaler().fit(x_training)
+        x_training = scaler.transform(x_training)
+        return x_training
 
     def replacing(self, style="DEFAULT", save=False):
         """

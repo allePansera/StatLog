@@ -1,9 +1,0 @@
-TrainingLoggerRFOS_SVM INFO     Starting...
-TrainingLoggerRFOS_SVM INFO     Classifier production - RF...
-TrainingLoggerRFOS_SVM INFO     Classifier produced in 0.32sec
-TrainingLoggerRFOS_SVM INFO     Accuracy: 76.0%
-TrainingLoggerRFOS_SVM INFO     F1 score: 82.60869565217392
-TrainingLoggerRFOS_SVM INFO     FDR: 16.0%
-TrainingLoggerRFOS_SVM INFO     Precision: 84.0%
-TrainingLoggerRFOS_SVM INFO     Recall: 81.0%
-TrainingLoggerRFOS_SVM INFO     Training concluded...

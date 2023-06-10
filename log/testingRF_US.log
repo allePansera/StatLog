@@ -1,9 +1,0 @@
-TrainingLoggerRFUS INFO     Starting...
-TrainingLoggerRFUS INFO     Classifier production - RF...
-TrainingLoggerRFUS INFO     Classifier produced in 0.28sec
-TrainingLoggerRFUS INFO     Accuracy: 66.0%
-TrainingLoggerRFUS INFO     F1 score: 71.66666666666669
-TrainingLoggerRFUS INFO     FDR: 14.000000000000002%
-TrainingLoggerRFUS INFO     Precision: 86.0%
-TrainingLoggerRFUS INFO     Recall: 61.0%
-TrainingLoggerRFUS INFO     Training concluded...

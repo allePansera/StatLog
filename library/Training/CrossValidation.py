@@ -27,7 +27,7 @@ class CrossValidation:
         self.STORE_NORMALIZED = args.store_normalized
         self.MASTER_LOG_PATH = "log/master.log"
         self.LOG_BASE_PATH = "log/testing{}_{}.log"
-        self.SUPPORTED_CLASSIFIER = ["LR", "RF", "KNN"]
+        self.SUPPORTED_CLASSIFIER = ["RF", "LR", "KNN"]
         self.SUPPORTED_SAMPLING = ["US", "OS_SVM", "OS_K", "OS_ADASYN"]
         self.K_TEST = 1 if self.MODE == 'light' else 5
         self.W_F1 = 5
@@ -81,7 +81,6 @@ class CrossValidation:
         # OLD -> df = ds.download(save=True)
         df = ds.read_from_file(path=self.SOURCE)
         EDA_plot(df)
-        # USED WITH SCALING -> cols = list(df.keys())
         # Dataset normalization & scaling
         eda = EDA(df, verbose=self.VERBOSE)
         eda.replacing(save=self.STORE_NORMALIZED)
@@ -91,13 +90,7 @@ class CrossValidation:
         dp = DatasetPartition(df)
         x_training, y_training, x_testing, y_testing = dp.split()
         # NOT SUGGESTED DUE TO LACK OF PERFORMANCE  Scaling training dataset
-        # df_training = pd.DataFrame(x_training, columns=cols[:-1])
-        # df_training.insert(df_training.shape[1], cols[-1], y_training, True)
-        # eda = EDA(df_training, verbose=self.VERBOSE, path_to_save='dataset/data_training_scaled.{}')
-        # eda.scaling(save=self.STORE_NORMALIZED)
-        # df_training = eda.get_df()
-        # dp = DatasetPartition(df_training, split_test=False)
-        # x_training, y_training, _, _ = dp.split()
+        # x_training = EDA.scaling(x_training)
         end = time.time()
         self.logger.info(f"Dataset loaded & analyzed... {round(end - start, 2)}sec")
         # Model training

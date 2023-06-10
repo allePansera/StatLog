@@ -1,9 +1,0 @@
-TrainingLoggerRFOS_ADASYN INFO     Starting...
-TrainingLoggerRFOS_ADASYN INFO     Classifier production - RF...
-TrainingLoggerRFOS_ADASYN INFO     Classifier produced in 0.3sec
-TrainingLoggerRFOS_ADASYN INFO     Accuracy: 76.0%
-TrainingLoggerRFOS_ADASYN INFO     F1 score: 82.85714285714286
-TrainingLoggerRFOS_ADASYN INFO     FDR: 17.0%
-TrainingLoggerRFOS_ADASYN INFO     Precision: 83.0%
-TrainingLoggerRFOS_ADASYN INFO     Recall: 83.0%
-TrainingLoggerRFOS_ADASYN INFO     Training concluded...

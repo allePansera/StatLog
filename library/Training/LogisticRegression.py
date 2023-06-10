@@ -57,7 +57,7 @@ class LogisticRegression(Classifier):
         :return:
         """
         try:
-            self.classifier = LogisticRegressionSk(solver="newton-cholesky", max_iter=1000)
+            self.classifier = LogisticRegressionSk(solver="newton-cholesky", max_iter=1000, penalty='l2')
             if self.mode == 'heavy': self.optimize_hparam()
             self.classifier.fit(self.x_training, self.y_training.ravel())
         except Exception as e:
@@ -81,10 +81,11 @@ class LogisticRegression(Classifier):
             FP = cm[1][0]
             TN = cm[1][1]
             FN = cm[0][1]
-            fdr = round(FP / (TP + FP), 2)
+            fdr = round(FP / (TP + FP), 2) if TP+FP != 0 else 1
             tpr, fpr, threshold = roc_curve(self.y_testing, y_predicted, pos_label=1)
             precision = precision_score(self.y_testing, y_predicted)
             recall = recall_score(self.y_testing, y_predicted)
             return cm, accuracy, f1, fdr, precision, recall, threshold, model, self.classifier.best_params_ if self.mode == 'heavy' else None
         except Exception as e:
+            print(e)
             raise TrainingException(f"Error '{e}' testing LogisticRegression classifier produced")

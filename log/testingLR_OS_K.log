@@ -1,9 +1,0 @@
-TrainingLoggerLROS_K INFO     Starting...
-TrainingLoggerLROS_K INFO     Classifier production - LR...
-TrainingLoggerLROS_K INFO     Classifier produced in 0.02sec
-TrainingLoggerLROS_K INFO     Accuracy: 76.0%
-TrainingLoggerLROS_K INFO     F1 score: 82.3529411764706
-TrainingLoggerLROS_K INFO     FDR: 15.0%
-TrainingLoggerLROS_K INFO     Precision: 85.0%
-TrainingLoggerLROS_K INFO     Recall: 80.0%
-TrainingLoggerLROS_K INFO     Training concluded...

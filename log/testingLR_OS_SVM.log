@@ -1,9 +1,0 @@
-TrainingLoggerLROS_SVM INFO     Starting...
-TrainingLoggerLROS_SVM INFO     Classifier production - LR...
-TrainingLoggerLROS_SVM INFO     Classifier produced in 0.01sec
-TrainingLoggerLROS_SVM INFO     Accuracy: 79.0%
-TrainingLoggerLROS_SVM INFO     F1 score: 83.96946564885496
-TrainingLoggerLROS_SVM INFO     FDR: 10.0%
-TrainingLoggerLROS_SVM INFO     Precision: 90.0%
-TrainingLoggerLROS_SVM INFO     Recall: 79.0%
-TrainingLoggerLROS_SVM INFO     Training concluded...

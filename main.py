@@ -21,7 +21,7 @@ STORE_NORMALIZED_HELP = """1 if the normalized dataset should be normalized, 0 o
 parser = argparse.ArgumentParser(description='German credit data ML model.')
 parser.add_argument('--mode', type=str, default='light', choices=['light', 'heavy'], help=MODE_HELP)
 parser.add_argument('--source', type=str, default='dataset/data.csv', help=SOURCE_HELP)
-parser.add_argument('--verbose', type=int, default=0, choices=[0, 1], help=VERBOSE_HELP)
+parser.add_argument('--verbose', type=int, default=1, choices=[0, 1], help=VERBOSE_HELP)
 parser.add_argument('--store_normalized', type=int, default=1, choices=[0, 1], help=STORE_NORMALIZED_HELP)
 
 args = parser.parse_args()

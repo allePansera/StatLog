@@ -1,9 +1,0 @@
-TrainingLoggerKNNOS_K INFO     Starting...
-TrainingLoggerKNNOS_K INFO     Classifier production - KNN...
-TrainingLoggerKNNOS_K INFO     Classifier produced in 0.02sec
-TrainingLoggerKNNOS_K INFO     Accuracy: 60.0%
-TrainingLoggerKNNOS_K INFO     F1 score: 73.6842105263158
-TrainingLoggerKNNOS_K INFO     FDR: 32.0%
-TrainingLoggerKNNOS_K INFO     Precision: 68.0%
-TrainingLoggerKNNOS_K INFO     Recall: 80.0%
-TrainingLoggerKNNOS_K INFO     Training concluded...

@@ -1,9 +1,0 @@
-TrainingLoggerKNNOS_SVM INFO     Starting...
-TrainingLoggerKNNOS_SVM INFO     Classifier production - KNN...
-TrainingLoggerKNNOS_SVM INFO     Classifier produced in 0.01sec
-TrainingLoggerKNNOS_SVM INFO     Accuracy: 60.0%
-TrainingLoggerKNNOS_SVM INFO     F1 score: 71.01449275362319
-TrainingLoggerKNNOS_SVM INFO     FDR: 28.000000000000004%
-TrainingLoggerKNNOS_SVM INFO     Precision: 72.0%
-TrainingLoggerKNNOS_SVM INFO     Recall: 70.0%
-TrainingLoggerKNNOS_SVM INFO     Training concluded...

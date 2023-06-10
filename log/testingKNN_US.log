@@ -1,9 +1,0 @@
-TrainingLoggerKNNUS INFO     Starting...
-TrainingLoggerKNNUS INFO     Classifier production - KNN...
-TrainingLoggerKNNUS INFO     Classifier produced in 0.01sec
-TrainingLoggerKNNUS INFO     Accuracy: 48.0%
-TrainingLoggerKNNUS INFO     F1 score: 51.85185185185185
-TrainingLoggerKNNUS INFO     FDR: 26.0%
-TrainingLoggerKNNUS INFO     Precision: 74.0%
-TrainingLoggerKNNUS INFO     Recall: 40.0%
-TrainingLoggerKNNUS INFO     Training concluded...
