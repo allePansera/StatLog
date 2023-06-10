@@ -87,5 +87,4 @@ class LogisticRegression(Classifier):
             recall = recall_score(self.y_testing, y_predicted)
             return cm, accuracy, f1, fdr, precision, recall, threshold, model, self.classifier.best_params_ if self.mode == 'heavy' else None
         except Exception as e:
-            print(e)
             raise TrainingException(f"Error '{e}' testing LogisticRegression classifier produced")

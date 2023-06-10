@@ -5,10 +5,13 @@ from library.Plot.ConfusionMatrix import plot as conf_matrix_plot
 
 class Training:
     """This class execute the training of the model"""
-    def __init__(self, method="RF", oversample_tech='OS_SVM', logging_path='log/training.log'):
+    def __init__(self, method="RF", oversample_tech='OS_SVM', logging_path='log/training.log', verbose=0):
         """
         Initialize the logger that print training status
+        :param method: training model
+        :param oversample_tech: samling technique
         :param logging_path: path to write log messages
+        :param verbose: set verbosity level
         """
         # logging.basicConfig(filename=logging_path,
         # filemode='w',
@@ -25,6 +28,7 @@ class Training:
         self.logger.propagate = False
         self.method = method
         self.oversample_tech = oversample_tech
+        self.verbose = verbose
 
 
     def release_logger(self):
@@ -81,4 +85,5 @@ class Training:
             self.release_logger()
             return round(accuracy, 2)*100 , f1*100, round(fdr, 2)*100, round(precision, 2)*100, round(recall, 2)*100
         except Exception as e:
+            if self.verbose: print(e)
             self.logger.error(f"Error '{e}' while executing training...")
