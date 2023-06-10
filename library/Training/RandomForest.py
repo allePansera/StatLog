@@ -65,7 +65,7 @@ class RandomForest(Classifier):
     def test(self):
         """
         test() check the result for the Random Forest classifier produced
-        :return: confusion matrix error, accuracy, f1 score, good borrower precision, bad borrower precision, fpr, precision, roc threshold, model, param scelti
+        :return: confusion matrix error, accuracy, f1 score, good borrower precision, bad borrower precision, fpr, precision, roc threshold, model, param. optim., y_predicted
         """
         try:
             if self.classifier is None:
@@ -84,6 +84,6 @@ class RandomForest(Classifier):
             tpr, fpr, threshold = roc_curve(self.y_testing, y_predicted, pos_label=1)
             precision = precision_score(self.y_testing, y_predicted)
             recall = recall_score(self.y_testing, y_predicted)
-            return cm, accuracy, f1, fdr, precision, recall, threshold, model, self.classifier.best_params_ if self.mode == 'heavy' else None
+            return cm, accuracy, f1, fdr, precision, recall, threshold, model, self.classifier.best_params_ if self.mode == 'heavy' else None, y_predicted
         except Exception as e:
             raise TrainingException(f"Error '{e}' testing RandomForest classifier produced")

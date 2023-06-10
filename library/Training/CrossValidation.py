@@ -6,6 +6,7 @@ from library.Dataset.Dataset import Dataset
 from library.Dataset.EDA import EDA
 from library.Plot.Histogram import plot
 from library.Plot.EDA_Analysis import plot as EDA_plot
+from library.Plot.ROC_curves import plot as ROC_plot
 
 
 warnings.simplefilter(action='ignore', category=FutureWarning)
@@ -88,9 +89,9 @@ class CrossValidation:
         df = eda.get_df()
         # Dataset partition
         dp = DatasetPartition(df)
-        x_training, y_training, x_testing, y_testing = dp.split()
+        self.x_training, self.y_training, self.x_testing, self.y_testing = dp.split()
         # NOT SUGGESTED DUE TO LACK OF PERFORMANCE  Scaling training dataset
-        # x_training = EDA.scaling(x_training)
+        # self.x_training = EDA.scaling(x_training)
         end = time.time()
         self.logger.info(f"Dataset loaded & analyzed... {round(end - start, 2)}sec")
         # Model training
@@ -104,11 +105,11 @@ class CrossValidation:
                     start_inner = time.time()
                     t = Training(method=classifier, oversample_tech=sampler,
                                  logging_path=self.LOG_BASE_PATH.format(classifier, sampler))
-                    accuracy, f1, fdr, precision, recall = t.run(x_training=x_training, y_training=y_training,
-                                                       x_testing=x_testing, y_testing=y_testing,
+                    accuracy, f1, fdr, precision, recall, y_predicted = t.run(x_training=self.x_training, y_training=self.y_training,
+                                                       x_testing=self.x_testing, y_testing=self.y_testing,
                                                        mode=self.MODE)
                     # store model performance after internal h_param optimization
-                    test_result = {"ACC": accuracy, "F1": f1, "FDR": fdr, "PRECISION": precision, "RECALL": recall}
+                    test_result = {"ACC": accuracy, "F1": f1, "FDR": fdr, "PRECISION": precision, "RECALL": recall, "Y": y_predicted}
                     self.performances[classifier][sampler].append(test_result)
                     end_inner = time.time()
                     if self.VERBOSE: self.logger.info(f"{index+1}) Model trained in {round(end_inner - start_inner, 2)}sec...")
@@ -133,12 +134,14 @@ class CrossValidation:
                     sum([result["PRECISION"] for result in self.performances[classifier][sampler]]) / self.K_TEST, 2)
                 medium_recall = round(sum([result["RECALL"] for result in self.performances[classifier][sampler]]) / self.K_TEST,
                                       2)
+                medium_y = self.performances[classifier][sampler][0]["Y"]
                 result.append({"classifier": classifier, "sampler": sampler,
                                "ACC": medium_accuracy,
                                "F1": medium_f1,
                                "FDR": medium_fdr,
                                "PRECISION": medium_precision,
                                "RECALL": medium_recall,
+                               "Y": medium_y,
                                "AVG": round(
                                    (self.W_F1 * medium_f1
                                     + self.W_FDR * (100 - medium_fdr)
@@ -194,4 +197,11 @@ class CrossValidation:
              labels=[f'{row["classifier"]}_{row["sampler"]}' for row in table])
         for row in table:
             self.logger.info('| {:4} | {:10} | {:^4} |'.format(row["classifier"], row["sampler"], row["AVG"]))
+
+        # ROC CURVE OVERLAPPING - TOP 5
+        ROC_plot(list_of_label=[f'{row["classifier"]}_{row["sampler"]}' for row in table],
+                 list_y_predicted=[row["Y"] for row in table],
+                 list_y_true=self.y_testing
+                 )
+
 

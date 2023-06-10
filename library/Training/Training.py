@@ -50,7 +50,7 @@ class Training:
         :param x_testing: passed to the classifier to evaluate performance
         :param y_testing: passed to the classifier to evaluate performance
         :param mode: if 'heavy' hyper params are optimized
-        :return: ACCURACY, F1, FDR, PRECISION, RECALL
+        :return: ACCURACY, F1, FDR, PRECISION, RECALL, Y_PREDICTED
         """
         try:
             self.logger.info("Starting...")
@@ -62,7 +62,7 @@ class Training:
                             mode=mode)
             start = time.time()
             cl.train()
-            cm, accuracy, f1, fdr, precision, recall, threshold, model, chosen_h_param = cl.test()
+            cm, accuracy, f1, fdr, precision, recall, threshold, model, chosen_h_param, y_predicted = cl.test()
             end = time.time()
             self.logger.info(f"Classifier produced in {round(end - start, 2)}sec")
 
@@ -83,7 +83,7 @@ class Training:
 
             self.logger.info("Training concluded...")
             self.release_logger()
-            return round(accuracy, 2)*100 , f1*100, round(fdr, 2)*100, round(precision, 2)*100, round(recall, 2)*100
+            return round(accuracy, 2)*100 , f1*100, round(fdr, 2)*100, round(precision, 2)*100, round(recall, 2)*100, y_predicted
         except Exception as e:
             if self.verbose: print(e)
             self.logger.error(f"Error '{e}' while executing training...")
