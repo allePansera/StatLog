@@ -169,7 +169,7 @@ Current evaluation parameter:
 * Precision
 
 
-Extra documentation at: [document](/FdML_Report_Template.pdf)
+Extra documentation at: [document](/FdML_Report.pdf)
 
 ## Execution
 Install all the dependencies (Python 3.8):
