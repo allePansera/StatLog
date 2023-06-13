@@ -144,7 +144,7 @@ class EDA:
         :param x_training: matrix to be normalized
         :return: x_training normalized
         """
-        scaler = StandardScaler().fit(x_training)
+        scaler = StandardScaler()
         x_training = scaler.fit_transform(x_training)
         return x_training
 
