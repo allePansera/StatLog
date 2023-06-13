@@ -145,7 +145,7 @@ class EDA:
         :return: x_training normalized
         """
         scaler = StandardScaler().fit(x_training)
-        x_training = scaler.transform(x_training)
+        x_training = scaler.fit_transform(x_training)
         return x_training
 
     def replacing(self, style="DEFAULT", save=False):

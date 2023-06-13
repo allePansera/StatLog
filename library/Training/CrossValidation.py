@@ -91,7 +91,7 @@ class CrossValidation:
         dp = DatasetPartition(df)
         self.x_training, self.y_training, self.x_testing, self.y_testing = dp.split()
         # NOT SUGGESTED DUE TO LACK OF PERFORMANCE  Scaling training dataset
-        # self.x_training = EDA.scaling(x_training)
+        # self.x_training = EDA.scaling(self.x_training)
         end = time.time()
         self.logger.info(f"Dataset loaded & analyzed... {round(end - start, 2)}sec")
         # Model training
